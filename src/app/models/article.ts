@@ -1,7 +1,4 @@
 import {isNullOrUndefined} from "util";
-/**
- * Created by Lucas OMS on 11/08/2018.
- */
 
 export class Article {
 

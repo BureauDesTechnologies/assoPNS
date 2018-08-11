@@ -1,19 +1,3 @@
-/*
- * ................................................................................................................................
- *  . Copyright (c)
- *  .
- *  . The app.module.ts class was created by :
- *  . A.Bolot, O.Osgart, L.Oms and G.Peltier
- *  .
- *  . As part of the polygame project
- *  .
- *  . Last modified : 22/07/18 11:56
- *  .
- *  . Contact : idevedit@gmail.com
- *  ...............................................................................................................................
- *
- */
-
 import {AppComponent} from "./components/app/app.component";
 import {NgModule} from "@angular/core";
 import {DropZoneDirective} from "./directives/drop-zone.directive";
@@ -47,7 +31,7 @@ import {UserService} from "./services/user.service";
 import {HomeComponent} from "./home/home.component";
 import {ArticleService} from "./services/article.service";
 import {ArticleViewComponent} from "./article-view/article-view.component";
-import { AddArticleComponent } from './add-article/add-article.component';
+import {AddArticleComponent} from "./add-article/add-article.component";
 @NgModule({
     declarations: [
         AppComponent,

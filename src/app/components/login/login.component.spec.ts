@@ -1,19 +1,3 @@
-/*
- * ................................................................................................................................
- *  . Copyright (c)
- *  .
- *  . The login.component.spec.ts class was created by :
- *  . A.Bolot, O.Osgart, L.Oms and G.Peltier
- *  .
- *  . As part of the polygame project
- *  .
- *  . Last modified : 12/07/18 18:22
- *  .
- *  . Contact : idevedit@gmail.com
- *  ...............................................................................................................................
- *
- */
-
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {LoginComponent} from "./login.component";

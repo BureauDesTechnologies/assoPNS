@@ -1,19 +1,3 @@
-/*
- * ................................................................................................................................
- *  . Copyright (c)
- *  .
- *  . The routes.ts class was created by :
- *  . A.Bolot, O.Osgart, L.Oms and G.Peltier
- *  .
- *  . As part of the polygame project
- *  .
- *  . Last modified : 22/07/18 11:46
- *  .
- *  . Contact : idevedit@gmail.com
- *  ...............................................................................................................................
- *
- */
-
 import {RouterModule, Routes} from "@angular/router";
 import {RegistrationComponent} from "./components/registration/registration.component";
 import {LoginComponent} from "./components/login/login.component";

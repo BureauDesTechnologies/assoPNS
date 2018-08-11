@@ -1,24 +1,3 @@
-/**
- * Created by Lucas OMS on 11/08/2018.
- */
-
-/*
- * ................................................................................................................................
- *  . Copyright (c)
- *  .
- *  . The user.service.ts class was created by :
- *  . A.Bolot, O.Osgart, L.Oms and G.Peltier
- *  .
- *  . As part of the polygame project
- *  .
- *  . Last modified : 23/07/18 00:27
- *  .
- *  . Contact : idevedit@gmail.com
- *  ...............................................................................................................................
- *
- */
-
-
 import {Injectable} from "@angular/core";
 import {AngularFireStorage} from "angularfire2/storage";
 import * as firebase from "firebase";

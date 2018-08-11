@@ -1,19 +1,3 @@
-/*
- * ................................................................................................................................
- *  . Copyright (c)
- *  .
- *  . The user.ts class was created by :
- *  . A.Bolot, O.Osgart, L.Oms and G.Peltier
- *  .
- *  . As part of the polygame project
- *  .
- *  . Last modified : 23/07/18 00:27
- *  .
- *  . Contact : idevedit@gmail.com
- *  ...............................................................................................................................
- *
- */
-
 import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
 import * as firebase from "firebase";
 import {isNullOrUndefined} from "util";

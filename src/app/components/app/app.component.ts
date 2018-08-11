@@ -1,19 +1,3 @@
-/*
- * ................................................................................................................................
- *  . Copyright (c)
- *  .
- *  . The app.component.ts class was created by :
- *  . A.Bolot, O.Osgart, L.Oms and G.Peltier
- *  .
- *  . As part of the polygame project
- *  .
- *  . Last modified : 29/06/18 11:24
- *  .
- *  . Contact : idevedit@gmail.com
- *  ...............................................................................................................................
- *
- */
-
 import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/user";
