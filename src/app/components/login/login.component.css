@@ -1,0 +1,47 @@
+mat-form-field {
+    display: block;
+}
+
+#cardWrap {
+    padding: 16px;
+}
+
+#card, #registrationCard {
+    margin: 10px auto;
+    max-width: 450px;
+    border-radius: 8px;
+}
+
+#card {
+    padding-bottom: 24px;
+}
+
+#registrationCard {
+    text-align: center;
+    padding-bottom: 0;
+}
+
+.connectButton {
+    margin: auto;
+    display: block;
+}
+
+#cguLink, #cguLink:hover, #cguLink:visited {
+    font-size: 12px;
+    position: absolute;
+    bottom: -30px;
+    right: 0;
+    color: rgba(0, 0, 0, .54);
+    text-decoration: none;
+}
+
+#register, #register:visited {
+    display: inline-block;
+    text-decoration: none;
+    margin-left: 4px;
+}
+
+#register:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

@@ -1,0 +1,36 @@
+<mat-card [ngClass]="user.userId !== 'placeholder' ? '': 'hideComponent'">
+    <mat-card-title>Ajouter un article</mat-card-title>
+    <form (submit)="addArticleOnSubmit()">
+        <div class="form">
+            <div class="firstForm">
+                <mat-form-field id="title">
+                    <input matInput name="title" type="text" placeholder="Titre" required
+                           [(ngModel)]="articleToAdd.title"/>
+                    <mat-error>Ce champ doit être renseigné</mat-error>
+                </mat-form-field>
+                <mat-select required placeholder="Publier en tant que"
+                            (selectionChange)="articleToAdd.category = $event.value" id="category">
+                    <mat-option *ngFor="let publishAs of user.canPublishAs" [value]="publishAs">
+                        {{publishAs}}
+                    </mat-option>
+                </mat-select>
+            </div>
+            <mat-form-field>
+            <textarea matInput name="content" type="text" placeholder="Contenu" required
+                      [(ngModel)]="articleToAdd.content"></textarea>
+                <mat-error>Ce champ doit être renseigné</mat-error>
+            </mat-form-field>
+            <app-file-upload *ngIf="imageToDisplay ===''"
+                             (uploadedOnURL)="articleToAdd.imageUrl = $event"
+                             (downloadableOn)="imageToDisplay = $event"
+                             [subFolder]="'articleImages'"
+                             [displayedTitle]="'Ajouter une image'"
+                             [expectedType]="'image'"></app-file-upload>
+            <img *ngIf="imageToDisplay !== ''" [src]="imageToDisplay">
+
+        </div>
+        <button mat-raised-button color="primary" type="submit">
+            Valider
+        </button>
+    </form>
+</mat-card>

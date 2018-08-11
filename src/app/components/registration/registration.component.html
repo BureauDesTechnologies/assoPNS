@@ -1,0 +1,40 @@
+<mat-card id="card">
+    <form (submit)="validate()">
+        <app-file-upload *ngIf="photoLink === ''" (downloadableOn)="downloadableImage($event)"
+                         (uploadedOnURL)="hasUploadedPhoto($event)"></app-file-upload>
+        <img *ngIf="photoLink !== ''" style="display: block; max-height: 300px; margin: auto;" [src]="photoLink">
+        <div class="names">
+            <mat-form-field>
+                <input matInput name="firstName" type="text" placeholder="Prénom" required
+                       [(ngModel)]="userToRegister.firstName"/>
+                <mat-error>Vous devez entrer une valeur</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput name="name" type="text" placeholder="Nom" required
+                       [(ngModel)]="userToRegister.lastName"/>
+                <mat-error>Vous devez entrer une valeur</mat-error>
+            </mat-form-field>
+        </div>
+        <mat-form-field>
+            <input matInput autocomplete="username" name="mail" type="text" placeholder="Mail" required
+                   [formControl]="formControlMail"/>
+            <mat-error *ngIf="formControlMail.invalid">{{getMailError()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field hintLabel="5 caractères minimum">
+            <input matInput autocomplete="new-password" name="pwd" type="password" placeholder="Mot de passe" required
+                   (change)="checkPwdConfirm(); checkPwd();"
+                   [formControl]="formControlPwd"/>
+            <mat-error *ngIf="formControlPwd.invalid">{{getPwdError()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput name="pwdConfirm" type="password" autocomplete="new-password"
+                   placeholder="Confirmation du mot de passe" required
+                   [formControl]="formControlPwdConfirm" (change)="checkPwdConfirm(); checkPwd();"/>
+            <mat-error *ngIf="formControlPwdConfirm.invalid">{{getPwdConfirmError()}}</mat-error>
+        </mat-form-field>
+        <button class="nextStep" mat-raised-button color="primary" type="submit">
+            Suivant
+        </button>
+    </form>
+    <a routerLink="/cgu" id="cguLink">Conditions d'utilisations</a>
+</mat-card>

@@ -1,0 +1,41 @@
+mat-card {
+    max-width: 800px;
+    margin: 8px auto;
+}
+
+.form {
+    padding-bottom: 24px;
+}
+
+.firstForm {
+    display: flex;
+    flex-flow: wrap;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+
+#title {
+    flex: 1;
+    padding-right: 20px;
+}
+
+#category {
+    flex-basis: 200px;
+}
+
+.hideComponent {
+    display: none;
+}
+
+mat-form-field {
+    display: block;
+}
+
+app-file-upload {
+    display: block;
+    width: 300px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}

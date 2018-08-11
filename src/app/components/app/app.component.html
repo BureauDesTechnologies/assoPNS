@@ -1,0 +1,62 @@
+<!--
+  ~ ................................................................................................................................
+  ~  . Copyright (c)
+  ~  .
+  ~  . The app.component.html class was created by :
+  ~  . A.Bolot, O.Osgart, L.Oms and G.Peltier
+  ~  .
+  ~  . As part of the polygame project
+  ~  .
+  ~  . Last modified : 29/06/18 11:27
+  ~  .
+  ~  . Contact : idevedit@gmail.com
+  ~  ...............................................................................................................................
+  ~
+  -->
+<div class="mainWrapper">
+    <header>
+        <nav class="navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" routerLink="">Assos PNS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul *ngIf="connectedUser === null" class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="login">Se connecter<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav" [ngClass]="connectedUser !== null ? '': 'hideRouter'">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="">Accueil<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="profile">Mon profil</a>
+                    </li>
+                    <li [ngClass]="connectedUser !== null && connectedUser.canPublishAs.length > 0 ? '': 'hideRouter'"
+                        class="nav-item">
+                        <a class="nav-link" routerLink="admin">Publier</a>
+                    </li>
+                    <li [ngClass]="connectedUser !== null && connectedUser.canPublishAs.length > 0 ? '': 'hideRouter'"
+                        class="nav-item">
+                        <a class="nav-link" routerLink="admin">Déléguer</a>
+                    </li>
+                    <!--<li [ngClass]="connectedUser !== null && connectedUser.roles.includes('admin') ? '': 'hideRouter'"-->
+                    <!--class="nav-item">-->
+                    <!--<a class="nav-link" routerLink="admin">Administration</a>-->
+                    <!--</li>-->
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="disconnect()" style="cursor: pointer">Se déconnecter</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="mainContent">
+        <router-outlet></router-outlet>
+    </div>
+    <footer>
+        <p>Un site FRANCAIS par Goal Games</p>
+    </footer>
+</div>

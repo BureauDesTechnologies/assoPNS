@@ -1,0 +1,40 @@
+/*
+ * ................................................................................................................................
+ *  . Copyright (c)
+ *  .
+ *  . The app.component.css class was created by :
+ *  . A.Bolot, O.Osgart, L.Oms and G.Peltier
+ *  .
+ *  . As part of the polygame project
+ *  .
+ *  . Last modified : 29/06/18 10:24
+ *  .
+ *  . Contact : idevedit@gmail.com
+ *  ...............................................................................................................................
+ *
+ */
+
+.mainWrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-content: center;
+    justify-content: center;
+}
+
+.mainContent {
+    flex: 1;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hideRouter {
+    display: none;
+}
+
+footer {
+    text-align: center;
+    padding: 8px auto;
+}

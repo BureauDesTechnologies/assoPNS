@@ -1,0 +1,28 @@
+<div id="cardWrap">
+    <mat-card id="card">
+        <form (submit)="connect()">
+            <mat-form-field>
+                <input matInput autocomplete="username" name="mail" type="text" placeholder="Email" required
+                       [(ngModel)]="userToConnect.mail"/>
+                <mat-error>Vous devez entrer une valeur</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput autocomplete="password" name="pwd" placeholder="Mot de passe" required
+                       [(ngModel)]="userToConnect.password"
+                       [type]="hide ? 'password' : 'text'">
+                <mat-icon matSuffix (click)="hide = !hide" style="cursor: pointer">{{hide ? 'visibility' :
+                    'visibility_off'}}
+                </mat-icon>
+                <mat-error>Vous devez entrer une valeur</mat-error>
+            </mat-form-field>
+            <button class="connectButton" mat-raised-button color="primary" type="submit">
+                Se connecter
+            </button>
+        </form>
+    </mat-card>
+    <mat-card id="registrationCard">
+        <p style="display: inline-block">Nouveau ?</p>
+        <a routerLink="/registration" id="register">Je m'inscris</a>
+        <a routerLink="/cgu" id="cguLink">Conditions d'utilisations</a>
+    </mat-card>
+</div>
