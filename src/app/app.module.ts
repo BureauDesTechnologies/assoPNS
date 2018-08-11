@@ -17,6 +17,7 @@ import {
     MatIconModule,
     MatInputModule,
     MatListModule,
+    MatProgressSpinnerModule,
     MatSelectModule,
     MatSidenavModule,
     MatSnackBarModule
@@ -30,8 +31,14 @@ import {AppRoutingModule} from "./routes";
 import {UserService} from "./services/user.service";
 import {HomeComponent} from "./home/home.component";
 import {ArticleService} from "./services/article.service";
-import {ArticleViewComponent} from "./article-view/article-view.component";
-import {AddArticleComponent} from "./add-article/add-article.component";
+import {ArticleViewComponent} from "./components/article-view/article-view.component";
+import {AddArticleComponent} from "./components/add-article/add-article.component";
+import {BdcComponent} from "./components/assos/bdc/bdc.component";
+import {BdeComponent} from "./components/assos/bde/bde.component";
+import {BdsComponent} from "./components/assos/bds/bds.component";
+import {BdjComponent} from "./components/assos/bdj/bdj.component";
+import {BdhComponent} from "./components/assos/bdh/bdh.component";
+import {BdaComponent} from "./components/assos/bda/bda.component";
 @NgModule({
     declarations: [
         AppComponent,
@@ -44,6 +51,12 @@ import {AddArticleComponent} from "./add-article/add-article.component";
         HomeComponent,
         ArticleViewComponent,
         AddArticleComponent,
+        BdcComponent,
+        BdeComponent,
+        BdsComponent,
+        BdjComponent,
+        BdhComponent,
+        BdaComponent,
     ],
     imports: [
         BrowserModule,
@@ -60,6 +73,7 @@ import {AddArticleComponent} from "./add-article/add-article.component";
         MatIconModule,
         MatListModule,
         MatSidenavModule,
+        MatProgressSpinnerModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
         AngularFireStorageModule,

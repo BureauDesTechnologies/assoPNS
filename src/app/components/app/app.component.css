@@ -6,12 +6,134 @@
     justify-content: center;
 }
 
-.mainContent {
+header {
+    display: block;
+}
+
+mat-sidenav-container {
     flex: 1;
+}
+
+mat-sidenav-content {
+    padding: 8px;
+}
+
+mat-sidenav {
+    position: fixed;
+    background-color: #1b1b1b;
+}
+
+a .assoName {
+    visibility: hidden;
+}
+
+/*Add , .active + .assoName to enable text permanently when selected*/
+a:hover .assoName {
+    visibility: visible !important;
+}
+
+.menuItem {
     display: flex;
-    align-content: center;
-    justify-content: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    display: block;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+}
+
+mat-sidenav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+mat-sidenav a, mat-sidenav a:hover, .assoName {
+    color: white;
+    text-decoration: none;
+    font-size: smaller;
+    margin: auto 4px;
+}
+
+.assoName {
+    max-width: 100px;
+    text-align: center;
+}
+
+.assoName p {
+    margin: 0;
+}
+
+/*Assos and src*/
+/*BDE*/
+a .bde {
+    background: url('../../../assets/logoBlanc.png') center no-repeat;
+    background-size: contain;
+}
+
+a:hover .bde, a .bde.active {
+    background: url('../../../assets/logoBDC.png') center no-repeat;
+    background-size: contain;
+}
+
+/*BDS*/
+a .bds {
+    background: url('../../../assets/logoBlanc.png') center no-repeat;
+    background-size: contain;
+}
+
+a:hover .bds, a .bds.active {
+    background: url('../../../assets/logoBDC.png') center no-repeat;
+    background-size: contain;
+}
+
+/*BDC*/
+a .bdc {
+    background: url('../../../assets/logoBlanc.png') center no-repeat;
+    background-size: contain;
+}
+
+a:hover .bdc, a .bdc.active {
+    background: url('../../../assets/logoBDC.png') center no-repeat;
+    background-size: contain;
+}
+
+/*BDJ*/
+a .bdj {
+    background: url('../../../assets/logoBlanc.png') center no-repeat;
+    background-size: contain;
+}
+
+a:hover .bdj, a .bdj.active {
+    background: url('../../../assets/logoBDC.png') center no-repeat;
+    background-size: contain;
+}
+
+/*BDA*/
+a .bda {
+    background: url('../../../assets/logoBlanc.png') center no-repeat;
+    background-size: contain;
+}
+
+a:hover .bda, a .bda.active {
+    background: url('../../../assets/logoBDC.png') center no-repeat;
+    background-size: contain;
+}
+
+/*BDH*/
+a .bdh {
+    background: url('../../../assets/logoBlanc.png') center no-repeat;
+    background-size: contain;
+}
+
+a:hover .bdh, a .bdh.active {
+    background: url('../../../assets/logoBDC.png') center no-repeat;
+    background-size: contain;
 }
 
 .hideRouter {
@@ -19,6 +141,12 @@
 }
 
 footer {
+    background: #494949;
     text-align: center;
+    margin-left: 116px;
     padding: 8px auto;
+}
+
+footer p {
+    margin: 4px auto;
 }

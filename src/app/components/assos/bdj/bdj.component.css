@@ -1,0 +1,9 @@
+.loading {
+    margin: 16px auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+mat-progress-spinner {
+    display: inline-block;
+}

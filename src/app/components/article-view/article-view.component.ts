@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {Article} from "../models/article";
+import {Article} from "../../models/article";
 
 @Component({
     selector: 'app-article-view',
@@ -11,7 +11,15 @@ export class ArticleViewComponent implements OnInit {
     @Input()
     article: Article;
 
+    /**
+     * Enable to display asso Name in the detail view
+     * Default : false
+     */
+    @Input()
+    mustDisplayAssoName: boolean;
+
     constructor() {
+        this.mustDisplayAssoName = false;
     }
 
     ngOnInit() {

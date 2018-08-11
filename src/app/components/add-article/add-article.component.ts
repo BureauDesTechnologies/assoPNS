@@ -1,9 +1,9 @@
 import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
-import {UserService} from "../services/user.service";
-import {User} from "../models/user";
-import {Article} from "../models/article";
-import {ArticleService} from "../services/article.service";
+import {User} from "../../models/user";
+import {UserService} from "../../services/user.service";
+import {ArticleService} from "../../services/article.service";
 import {MatSnackBar} from "@angular/material";
+import {Article} from "../../models/article";
 
 @Component({
     selector: 'app-add-article',

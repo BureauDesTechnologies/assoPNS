@@ -44,4 +44,20 @@ export class ArticleService {
         });
         return Promise.resolve(articles);
     }
+
+    async getAllArticlesOf(category: string): Promise<Article[]> {
+        const articles = [];
+        const docs = await firestore().collection('Articles')
+            .where('category', '==', category)
+            .orderBy('creation', "desc")
+            .get();
+        docs.docs.forEach(async article => {
+            const art: Article = Article.fromDB(article);
+            if (art.imageUrl !== '' && !isNullOrUndefined(art.imageUrl)) {
+                art.downloadableImageUrl = await this.getDownloadImageUrl(art);
+            }
+            articles.push(art);
+        });
+        return Promise.resolve(articles);
+    }
 }

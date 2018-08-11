@@ -38,9 +38,49 @@
             </div>
         </nav>
     </header>
-    <div class="mainContent">
-        <router-outlet></router-outlet>
-    </div>
+    <mat-sidenav-container>
+        <mat-sidenav opened mode="side">
+            <a routerLink="/bde">
+                <div class="menuItem">
+                    <div [class]="currentRoute.startsWith('/bde') ? 'bde logo active': 'bde logo'"></div>
+                    <div class="assoName"><p>Bureau des Élèves</p></div>
+                </div>
+            </a>
+            <a routerLink="/bds">
+                <div class="menuItem">
+                    <div [class]="currentRoute.startsWith('/bds') ? 'bds logo active': 'bds logo'"></div>
+                    <div class="assoName"><p>Bureau du Sport</p></div>
+                </div>
+            </a>
+            <a routerLink="/bdc">
+                <div class="menuItem">
+                    <div [class]="currentRoute.startsWith('/bdc') ? 'bdc logo active': 'bdc logo'"></div>
+                    <div class="assoName"><p>Bureau du Code</p></div>
+                </div>
+            </a>
+            <a routerLink="/bdj">
+                <div class="menuItem">
+                    <div [class]="currentRoute.startsWith('/bdj') ? 'bdj logo active': 'bdj logo'"></div>
+                    <div class="assoName"><p>Bureau des Jeux</p></div>
+                </div>
+            </a>
+            <a routerLink="/bda">
+                <div class="menuItem">
+                    <div [class]="currentRoute.startsWith('/bda') ? 'bda logo active': 'bda logo'"></div>
+                    <div class="assoName"><p>Bureau des Arts</p></div>
+                </div>
+            </a>
+            <a routerLink="/bdh">
+                <div class="menuItem">
+                    <div [class]="currentRoute.startsWith('/bdh') ? 'bdh logo active': 'bdh logo'"></div>
+                    <div class="assoName"><p>Bureau de l'Humanitaire</p></div>
+                </div>
+            </a>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
     <footer>
         <p>Un site du Bureau du code pour les associations de Polytech Nice Sophia</p>
     </footer>
