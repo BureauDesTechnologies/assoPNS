@@ -1,3 +1,4 @@
+import {isNullOrUndefined} from "util";
 /**
  * Created by Lucas OMS on 11/08/2018.
  */
@@ -23,11 +24,15 @@ export class Article {
     category: string;
     downloadableImageUrl: string;
 
-    static fromDB(res) {
+    static fromDB(res): Article {
         return this.fromJSON(res.data());
     }
 
-    static fromJSON(doc) {
-        return new Article(doc.title, doc.content, doc.imageUrl, doc.category);
+    static fromJSON(doc): Article {
+        const article = new Article(doc.title, doc.content, doc.imageUrl, doc.category);
+        if (article.imageUrl !== '' && !isNullOrUndefined(article)) {
+            // If the article has an image, we load downloadableImageUrl
+        }
+        return article;
     }
 }
