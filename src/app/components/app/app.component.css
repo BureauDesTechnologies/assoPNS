@@ -15,7 +15,8 @@ mat-sidenav-container {
 }
 
 mat-sidenav-content {
-    padding: 8px;
+    /*padding: 8px;*/
+    overflow: hidden;
 }
 
 mat-sidenav {
@@ -72,67 +73,67 @@ mat-sidenav a, mat-sidenav a:hover, .assoName {
 /*Assos and src*/
 /*BDE*/
 a .bde {
-    background: url('../../../assets/logoBDEblanc.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBDEblanc.png') center no-repeat;
     background-size: contain;
 }
 
 a:hover .bde, a .bde.active {
-    background: url('../../../assets/logoBDE.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBDE.png') center no-repeat;
     background-size: contain;
 }
 
 /*BDS*/
 a .bds {
-    background: url('../../../assets/logoBlanc.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBlanc.png') center no-repeat;
     background-size: contain;
 }
 
 a:hover .bds, a .bds.active {
-    background: url('../../../assets/logoBDC.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBDC.png') center no-repeat;
     background-size: contain;
 }
 
 /*BDC*/
 a .bdc {
-    background: url('../../../assets/logoBlanc.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBlanc.png') center no-repeat;
     background-size: contain;
 }
 
 a:hover .bdc, a .bdc.active {
-    background: url('../../../assets/logoBDC.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBDC.png') center no-repeat;
     background-size: contain;
 }
 
 /*BDJ*/
 a .bdj {
-    background: url('../../../assets/logoBDJblanc.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBDJblanc.png') center no-repeat;
     background-size: contain;
 }
 
 a:hover .bdj, a .bdj.active {
-    background: url('../../../assets/logoBDJ.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBDJ.png') center no-repeat;
     background-size: contain;
 }
 
 /*BDA*/
 a .bda {
-    background: url('../../../assets/logoBlanc.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBlanc.png') center no-repeat;
     background-size: contain;
 }
 
 a:hover .bda, a .bda.active {
-    background: url('../../../assets/logoBDC.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBDC.png') center no-repeat;
     background-size: contain;
 }
 
 /*BDH*/
 a .bdh {
-    background: url('../../../assets/logoBlanc.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBlanc.png') center no-repeat;
     background-size: contain;
 }
 
 a:hover .bdh, a .bdh.active {
-    background: url('../../../assets/logoBDC.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBDC.png') center no-repeat;
     background-size: contain;
 }
 

@@ -1,0 +1,75 @@
+.titleAndLogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto 8px;
+}
+
+.title {
+    flex: 1;
+    max-width: 1000px;
+    display: flex;
+    align-items: center;
+}
+
+.logoTitle {
+    width: 75px;
+}
+
+.divider {
+    background-color: #777;
+    height: 1px;
+    flex-grow: 1;
+}
+
+.titleAndLogo .divider.last{
+    margin-right: 8px;
+}
+
+.name {
+    margin: auto;
+}
+
+.title .name h1 {
+    font-size: 2rem;
+    color: #ff9800;
+    margin: 0 8px;
+}
+
+.content {
+    margin: 8px auto;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    max-width: 900px;
+}
+
+.image {
+    background: #3b3b3b;
+    display: inline-grid;
+    align-content: center;
+    justify-content: center;
+    min-height: 75px;
+    min-width: 75px;
+    max-width: 75px;
+    max-height: 75px;
+    border-radius: 50%;
+}
+
+.image img {
+    max-height: 50px;
+    margin: 4px;
+}
+
+.content p {
+    margin: 0;
+    text-align: justify;
+}
+
+.contact {
+    text-align: center;
+    color: #ff9800;
+    font-weight: 300;
+    padding-right: 75px;
+}

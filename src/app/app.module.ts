@@ -1,11 +1,6 @@
-import {AppComponent} from "./components/app/app.component";
 import {NgModule} from "@angular/core";
 import {DropZoneDirective} from "./directives/drop-zone.directive";
-import {FileUploadComponent} from "./components/utilities/file-upload/file-upload.component";
 import {FileSizePipe} from "./components/utilities/pipes/file-size";
-import {LoginComponent} from "./components/login/login.component";
-import {RegistrationComponent} from "./components/registration/registration.component";
-import {ProfileComponent} from "./components/profile/profile.component";
 import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -29,16 +24,24 @@ import {environment} from "../environments/environment";
 import {AngularFireModule} from "angularfire2";
 import {AppRoutingModule} from "./routes";
 import {UserService} from "./services/user.service";
-import {HomeComponent} from "./home/home.component";
 import {ArticleService} from "./services/article.service";
-import {ArticleViewComponent} from "./components/article-view/article-view.component";
-import {AddArticleComponent} from "./components/add-article/add-article.component";
-import {BdcComponent} from "./components/assos/bdc/bdc.component";
-import {BdeComponent} from "./components/assos/bde/bde.component";
-import {BdsComponent} from "./components/assos/bds/bds.component";
-import {BdjComponent} from "./components/assos/bdj/bdj.component";
-import {BdhComponent} from "./components/assos/bdh/bdh.component";
-import {BdaComponent} from "./components/assos/bda/bda.component";
+import {AppComponent} from "./components/app/app.component";
+import {RegistrationComponent} from "./components/user-components/registration/registration.component";
+import {FileUploadComponent} from "./components/utilities/file-upload/file-upload.component";
+import {LoginComponent} from "./components/user-components/login/login.component";
+import {ProfileComponent} from "./components/user-components/profile/profile.component";
+import {HomeComponent} from "./components/articles-components/home/home.component";
+import {ArticleViewComponent} from "./components/articles-components/article-view/article-view.component";
+import {AddArticleComponent} from "./components/articles-components/add-article/add-article.component";
+import {BdcComponent} from "./components/assos-components/assos-pages/bdc/bdc.component";
+import {BdeComponent} from "./components/assos-components/assos-pages/bde/bde.component";
+import {BdsComponent} from "./components/assos-components/assos-pages/bds/bds.component";
+import {BdjComponent} from "./components/assos-components/assos-pages/bdj/bdj.component";
+import {BdhComponent} from "./components/assos-components/assos-pages/bdh/bdh.component";
+import {BdaComponent} from "./components/assos-components/assos-pages/bda/bda.component";
+import {AssosOverviewComponent} from "./components/assos-components/assos-overview/assos-overview.component";
+import {AssoPresentationComponent} from "./components/assos-components/asso-presentation/asso-presentation.component";
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -57,6 +60,8 @@ import {BdaComponent} from "./components/assos/bda/bda.component";
         BdjComponent,
         BdhComponent,
         BdaComponent,
+        AssosOverviewComponent,
+        AssoPresentationComponent,
     ],
     imports: [
         BrowserModule,

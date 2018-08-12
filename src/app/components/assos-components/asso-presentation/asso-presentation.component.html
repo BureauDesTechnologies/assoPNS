@@ -1,0 +1,30 @@
+<div class="titleAndLogo">
+    <div class="title">
+        <div class="divider"></div>
+        <div class="name">
+            <h1>{{name}}</h1>
+        </div>
+        <div [class]="logo !== '' ? 'divider last' : 'divider'"></div>
+    </div>
+    <div class="logoTitle">
+        <div class="image" *ngIf="logo !== ''">
+            <img [src]="logo">
+        </div>
+        <div [class]="logo === '' ? 'divider last' : 'divider'" *ngIf="logo === ''"
+             style="width: 75px">
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="description">
+        <p *ngFor="let description of descriptions">
+            {{description}}
+            <br *ngIf="description !== descriptions[descriptions.length - 1]">
+            <br *ngIf="description !== descriptions[descriptions.length - 1]">
+        </p>
+    </div>
+</div>
+<div *ngIf="contact !==''" class="contact">
+    <p>{{contact}}</p>
+</div>

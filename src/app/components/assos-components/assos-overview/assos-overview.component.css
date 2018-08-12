@@ -1,0 +1,122 @@
+.presHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: url('../../../../assets/campus.png') center no-repeat;
+    background-size: cover;
+    min-height: 250px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.pre-intro {
+    color: #dbdbdb;
+}
+
+.pre-intro h2 {
+    text-align: center;
+    font-weight: 300;
+    color: #ff9800;
+}
+
+/*Media query to align all titles correctly even with logos that uncenter all*/
+@media (min-width: 535px) {
+    .pre-intro h2 {
+        padding-right: 75px;
+    }
+}
+
+@media (min-width: 830px) {
+    .presHeader {
+        padding-right: 75px;
+    }
+}
+
+.intro {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.statsCampus {
+    flex: 1;
+    padding: 30px;
+    background: #ff9800;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.statInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.statsCampus mat-icon {
+    font-size: 50px;
+    height: inherit;
+    width: inherit;
+    margin-right: 4px;
+}
+
+.statText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.statText p {
+    margin: 0;
+}
+
+.statsAssos {
+    padding: 20px;
+    flex: 1337;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background: #3b3b3b;
+    color: rgb(255, 152, 0);
+}
+
+.statsAssosInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+
+.statsAssosInfo mat-icon {
+    font-size: 50px;
+    height: inherit;
+    width: inherit;
+}
+
+.eventName {
+    text-align: center;
+}
+
+p.number {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+p.unit {
+    margin-top: -10px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.pre-intro {
+    text-align: justify;
+    padding: 16px;
+}
