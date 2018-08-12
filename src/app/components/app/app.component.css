@@ -72,12 +72,12 @@ mat-sidenav a, mat-sidenav a:hover, .assoName {
 /*Assos and src*/
 /*BDE*/
 a .bde {
-    background: url('../../../assets/logoBlanc.png') center no-repeat;
+    background: url('../../../assets/logoBDEblanc.png') center no-repeat;
     background-size: contain;
 }
 
 a:hover .bde, a .bde.active {
-    background: url('../../../assets/logoBDC.png') center no-repeat;
+    background: url('../../../assets/logoBDE.png') center no-repeat;
     background-size: contain;
 }
 
@@ -105,12 +105,12 @@ a:hover .bdc, a .bdc.active {
 
 /*BDJ*/
 a .bdj {
-    background: url('../../../assets/logoBlanc.png') center no-repeat;
+    background: url('../../../assets/logoBDJblanc.png') center no-repeat;
     background-size: contain;
 }
 
 a:hover .bdj, a .bdj.active {
-    background: url('../../../assets/logoBDC.png') center no-repeat;
+    background: url('../../../assets/logoBDJ.png') center no-repeat;
     background-size: contain;
 }
 
