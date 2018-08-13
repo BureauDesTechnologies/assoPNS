@@ -14,8 +14,13 @@ export class AppComponent implements OnInit {
 
     currentRoute: string;
 
+    mobileMenuOpened: boolean;
+    displayAssosPages: boolean;
+
     constructor(private userService: UserService, private ref: ChangeDetectorRef, private route: Router) {
         this.currentRoute = '';
+        this.mobileMenuOpened = false;
+        this.displayAssosPages = false;
     }
 
     ngOnInit() {

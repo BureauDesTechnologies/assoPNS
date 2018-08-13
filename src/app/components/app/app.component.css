@@ -151,3 +151,111 @@ footer {
 footer p {
     margin: 4px auto;
 }
+
+/*region Responsive*/
+header nav.mobile {
+    display: none;
+}
+
+header nav.mobile mat-icon {
+    margin: 4px;
+    cursor: pointer;
+}
+
+.headerMobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.mobileMenu {
+    position: absolute;
+    align-self: baseline;
+
+    min-width: 150px;
+    padding: 8px;
+    z-index: 2;
+    background: #262a2d;
+    box-shadow: 0 0 6px 0 black;
+    right: 8px;
+}
+
+.mobileMenu ul {
+    flex-direction: column;
+}
+
+.assoChoiceMobileWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 2;
+    background: #262a2d;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: scroll;
+}
+
+.assoChoiceMobile {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 24px;
+}
+
+.assoChoiceMobileWrapper mat-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.assoChoiceMobile .menuItem {
+    margin: 24px;
+}
+
+.assoChoiceMobile .menuItem .assoName {
+    visibility: visible !important;
+}
+
+@media (max-height: 500px) {
+    mat-sidenav {
+        display: none;
+    }
+
+    mat-sidenav-content {
+        margin-left: 0 !important;
+    }
+
+    footer {
+        margin: 0;
+    }
+}
+
+@media (max-width: 700px) {
+    mat-sidenav {
+        display: none;
+    }
+
+    mat-sidenav-content {
+        margin-left: 0 !important;
+    }
+
+    footer {
+        margin: 0;
+    }
+
+    /*700px min for header too, hide his content if less*/
+    header nav.desktop {
+        display: none;
+    }
+
+    header nav.mobile {
+        display: flex;
+    }
+}
+
+/*endregion*/
