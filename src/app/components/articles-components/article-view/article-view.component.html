@@ -8,6 +8,13 @@
     </div>
     <div class="actions">
         <div class="soc">
+            <mat-icon class="comment" *ngIf="commentsLoaded">chat_bubble</mat-icon>
+            <mat-icon class="active" (click)="loadCommentsAndDisplay()" *ngIf="!commentsLoaded">chat_bubble_outlined
+            </mat-icon>
+            <p class="amount">{{article.commentsCount}}</p>
+        </div>
+
+        <div class="soc">
             <mat-icon class="clap" *ngIf="hasBeenClap" svgIcon="clap"></mat-icon>
             <mat-icon class="active" (click)="clapArticle()" *ngIf="!hasBeenClap" svgIcon="clap_outlined"></mat-icon>
             <p class="amount">{{article.clap.size}}</p>
@@ -18,5 +25,10 @@
             <mat-icon class="active" (click)="favArticle()" *ngIf="!hasBeenFav">favorite_border</mat-icon>
             <p class="amount">{{article.favorite.size}}</p>
         </div>
+    </div>
+    <div class="comments" *ngIf="commentsLoaded">
+        <mat-divider></mat-divider>
+        <app-comment *ngFor="let comment of article.getComments()"
+                     [comment]="comment"></app-comment>
     </div>
 </mat-card>

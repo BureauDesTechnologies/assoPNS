@@ -1,4 +1,5 @@
 import {isNullOrUndefined} from "util";
+import {ArticleComment} from "./article-comment";
 
 export class Article {
     /**
@@ -16,8 +17,9 @@ export class Article {
         this.content = content;
         this.imageUrl = imageUrl;
         this.category = category;
-        this.favorite = category;
-        this.clap = category;
+        this.favorite = new Set(favorite);
+        this.clap = new Set(clap);
+        this.comments = new Set();
     }
 
     id: string;
@@ -28,6 +30,9 @@ export class Article {
     downloadableImageUrl: string;
     favorite: Set<string>;
     clap: Set<string>;
+
+    private _comments: Set<ArticleComment>;
+    commentsCount: number;
 
     static fromDB(res): Article {
         return this.fromJSON(res.id, res.data());
@@ -45,7 +50,25 @@ export class Article {
         } else {
             article.clap = new Set(doc.clap);
         }
+        article.commentsCount = doc.comments.length;
 
         return article;
+    }
+
+    addComment(articleComment: ArticleComment) {
+        if (isNullOrUndefined(articleComment)) {
+            this.comments = new Set();
+        }
+        this._comments.add(articleComment);
+    }
+
+    getComments(): ArticleComment[] {
+        const result = Array.from(this._comments.values());
+        result.sort((a, b) => a.date.valueOf() - b.date.valueOf());
+        return result;
+    }
+
+    set comments(value: Set<ArticleComment>) {
+        this._comments = value;
     }
 }

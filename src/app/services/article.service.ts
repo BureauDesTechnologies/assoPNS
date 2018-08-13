@@ -5,6 +5,7 @@ import {firestore} from "firebase";
 import {Article} from "../models/article";
 import {isNullOrUndefined} from "util";
 import {User} from "../models/user";
+import {ArticleComment} from "../models/article-comment";
 
 /**
  * This class contains all functions used to manage users
@@ -44,6 +45,20 @@ export class ArticleService {
         article.clap.add(user.userId);
         firestore().collection('Articles').doc(article.id).update({
             clap: [...Array.from(article.clap.keys())],
+        });
+    }
+
+    async loadComments(article: Article) {
+        if (isNullOrUndefined(article.comments)) {
+            article.comments = new Set();
+        }
+        const articleData = (await firestore().collection('Articles').doc(article.id).get()).data();
+        if (isNullOrUndefined(articleData.comments)) {
+            return;
+        }
+        articleData.comments.forEach(async comment => {
+            const user = User.fromDB(await comment.user.get());
+            article.addComment(new ArticleComment(user, new Date(comment.date), comment.content));
         });
     }
 

@@ -27,12 +27,14 @@ export class ArticleViewComponent implements OnInit {
 
     hasBeenFav: boolean;
     hasBeenClap: boolean;
+    commentsLoaded: boolean;
 
     constructor(private userService: UserService, private articleService: ArticleService,
                 private icons: MatIconRegistry, private domSanitizer: DomSanitizer) {
         this.mustDisplayAssoName = false;
         this.hasBeenFav = false;
         this.hasBeenClap = false;
+        this.commentsLoaded = false;
         icons.addSvgIcon('clap',
             this.domSanitizer.bypassSecurityTrustResourceUrl("../../../../assets/icons/clap.svg"));
         icons.addSvgIcon('clap_outlined',
@@ -51,6 +53,12 @@ export class ArticleViewComponent implements OnInit {
             if (this.article.favorite.has(this.connectedUser.userId)) {
                 this.hasBeenFav = true;
             }
+        });
+    }
+
+    loadCommentsAndDisplay() {
+        this.articleService.loadComments(this.article).then(_ => {
+            this.commentsLoaded = true;
         });
     }
 

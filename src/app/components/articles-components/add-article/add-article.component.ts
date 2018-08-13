@@ -19,7 +19,7 @@ export class AddArticleComponent implements OnInit {
 
     constructor(private userService: UserService, private articleService: ArticleService,
                 private snackbar: MatSnackBar, private ref: ChangeDetectorRef) {
-        this.articleToAdd = new Article('', '', '', '');
+        this.articleToAdd = new Article('', '', '', '', '', [], []);
         this.user = new User('', '', '', '', [], [], 'placeholder');
         this.imageToDisplay = '';
     }
