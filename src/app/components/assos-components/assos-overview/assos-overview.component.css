@@ -25,13 +25,13 @@
 /*Media query to align all titles correctly even with logos that uncenter all*/
 @media (min-width: 535px) {
     .pre-intro h2 {
-        padding-right: 75px;
+        padding-left: 75px;
     }
 }
 
 @media (min-width: 830px) {
     .presHeader {
-        padding-right: 75px;
+        padding-left: 75px;
     }
 }
 

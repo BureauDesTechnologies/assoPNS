@@ -1,7 +1,22 @@
 <mat-card>
-    <mat-card-title>{{article.title}}</mat-card-title>
-    <mat-card-subtitle *ngIf="mustDisplayAssoName">{{article.category}}</mat-card-subtitle>
-    <p>{{article.content}}</p>
-    <img *ngIf="article.downloadableImageUrl !== '' && article.downloadableImageUrl !== undefined "
-         [src]="article.downloadableImageUrl">
+    <div class="content">
+        <mat-card-title>{{article.title}}</mat-card-title>
+        <mat-card-subtitle *ngIf="mustDisplayAssoName">{{article.category}}</mat-card-subtitle>
+        <p>{{article.content}}</p>
+        <img *ngIf="article.downloadableImageUrl !== '' && article.downloadableImageUrl !== undefined "
+             [src]="article.downloadableImageUrl">
+    </div>
+    <div class="actions">
+        <div class="soc">
+            <mat-icon class="clap" *ngIf="hasBeenClap" svgIcon="clap"></mat-icon>
+            <mat-icon class="active" (click)="clapArticle()" *ngIf="!hasBeenClap" svgIcon="clap_outlined"></mat-icon>
+            <p class="amount">{{article.clap.size}}</p>
+        </div>
+
+        <div class="soc">
+            <mat-icon class="favorite" *ngIf="hasBeenFav">favorite</mat-icon>
+            <mat-icon class="active" (click)="favArticle()" *ngIf="!hasBeenFav">favorite_border</mat-icon>
+            <p class="amount">{{article.favorite.size}}</p>
+        </div>
+    </div>
 </mat-card>

@@ -4,6 +4,7 @@ import * as firebase from "firebase";
 import {firestore} from "firebase";
 import {Article} from "../models/article";
 import {isNullOrUndefined} from "util";
+import {User} from "../models/user";
 
 /**
  * This class contains all functions used to manage users
@@ -29,6 +30,20 @@ export class ArticleService {
             category: article.category,
             imageUrl: article.imageUrl,
             creation: firebase.firestore.FieldValue.serverTimestamp()
+        });
+    }
+
+    favArticle(article: Article, user: User) {
+        article.favorite.add(user.userId);
+        firestore().collection('Articles').doc(article.id).update({
+            favorite: [...Array.from(article.favorite.keys())],
+        });
+    }
+
+    clapArticle(article: Article, user: User) {
+        article.clap.add(user.userId);
+        firestore().collection('Articles').doc(article.id).update({
+            clap: [...Array.from(article.clap.keys())],
         });
     }
 

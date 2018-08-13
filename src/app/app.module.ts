@@ -10,6 +10,7 @@ import {
     MatDividerModule,
     MatFormFieldModule,
     MatIconModule,
+    MatIconRegistry,
     MatInputModule,
     MatListModule,
     MatProgressSpinnerModule,
@@ -41,6 +42,7 @@ import {BdhComponent} from "./components/assos-components/assos-pages/bdh/bdh.co
 import {BdaComponent} from "./components/assos-components/assos-pages/bda/bda.component";
 import {AssosOverviewComponent} from "./components/assos-components/assos-overview/assos-overview.component";
 import {AssoPresentationComponent} from "./components/assos-components/asso-presentation/asso-presentation.component";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
     declarations: [
@@ -84,9 +86,10 @@ import {AssoPresentationComponent} from "./components/assos-components/asso-pres
         AngularFireStorageModule,
         AngularFireAuthModule,
 
+        HttpClientModule,
         AppRoutingModule,
     ],
-    providers: [UserService, ArticleService, AngularFireAuth],
+    providers: [UserService, ArticleService, AngularFireAuth, MatIconRegistry],
     bootstrap: [AppComponent]
 })
 export class AppModule {

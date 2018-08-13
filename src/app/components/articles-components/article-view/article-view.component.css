@@ -1,4 +1,46 @@
 mat-card {
     max-width: 800px;
     margin: 8px auto;
+    padding: 0;
+}
+
+mat-card .content {
+    padding: 24px 24px 0 24px;
+}
+
+.actions {
+    text-align: end;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.actions mat-icon {
+    width: 24px;
+    height: 24px;
+    margin: 4px;
+}
+
+.actions mat-icon.active {
+    cursor: pointer;
+}
+
+.soc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+}
+
+.favorite {
+    color: #ba000d;
+}
+
+.clap {
+    color: #fdd835;
+}
+
+.amount {
+    margin: 0;
 }
