@@ -96,9 +96,17 @@
 }
 
 .statsAssosInfo mat-icon {
-    font-size: 50px;
     height: inherit;
     width: inherit;
+}
+
+.statsAssosInfo mat-icon:not(.customMatIcon) {
+    font-size: 50px;
+}
+
+.statsAssos mat-icon.customMatIcon {
+    width: 50px;
+    height: 50px;
 }
 
 .eventName {
