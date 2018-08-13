@@ -15,7 +15,6 @@ export class CommentComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.comment.date = Date.now();
     }
 
 }

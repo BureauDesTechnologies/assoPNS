@@ -7,9 +7,9 @@
              [src]="article.downloadableImageUrl">
     </div>
     <div class="actions">
-        <div class="soc">
-            <mat-icon class="comment" *ngIf="commentsLoaded">chat_bubble</mat-icon>
-            <mat-icon class="active" (click)="loadCommentsAndDisplay()" *ngIf="!commentsLoaded">chat_bubble_outlined
+        <div class="soc" (click)="displayOrHideComments()">
+            <mat-icon class="comment active" *ngIf="!hideComments">chat_bubble</mat-icon>
+            <mat-icon class="active" *ngIf="hideComments">chat_bubble_outlined
             </mat-icon>
             <p class="amount">{{article.commentsCount}}</p>
         </div>
@@ -26,8 +26,21 @@
             <p class="amount">{{article.favorite.size}}</p>
         </div>
     </div>
-    <div class="comments" *ngIf="commentsLoaded">
+    <div class="comments" *ngIf="commentsLoaded && !hideComments">
         <mat-divider></mat-divider>
+        <div *ngIf="connectedUser !== null">
+            <form>
+                <label for="comment">Poster un commentaire</label>
+                <div class="writeComment">
+                    <mat-form-field>
+                        <input matInput name="comment" id="comment" [(ngModel)]="writtenComment"/>
+                    </mat-form-field>
+                    <button mat-icon-button *ngIf="writtenComment.length > 0">
+                        <mat-icon>send</mat-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
         <app-comment *ngFor="let comment of article.getComments()"
                      [comment]="comment"></app-comment>
     </div>

@@ -29,12 +29,17 @@ export class ArticleViewComponent implements OnInit {
     hasBeenClap: boolean;
     commentsLoaded: boolean;
 
+    hideComments = true;
+
+    writtenComment: string;
+
     constructor(private userService: UserService, private articleService: ArticleService,
                 private icons: MatIconRegistry, private domSanitizer: DomSanitizer) {
         this.mustDisplayAssoName = false;
         this.hasBeenFav = false;
         this.hasBeenClap = false;
         this.commentsLoaded = false;
+        this.writtenComment = '';
         icons.addSvgIcon('clap',
             this.domSanitizer.bypassSecurityTrustResourceUrl("../../../../assets/icons/clap.svg"));
         icons.addSvgIcon('clap_outlined',
@@ -56,10 +61,18 @@ export class ArticleViewComponent implements OnInit {
         });
     }
 
-    loadCommentsAndDisplay() {
-        this.articleService.loadComments(this.article).then(_ => {
-            this.commentsLoaded = true;
-        });
+    /**
+     * Display or hide comment, only load once
+     */
+    displayOrHideComments() {
+        if (!this.commentsLoaded) {
+            this.articleService.loadComments(this.article).then(_ => {
+                this.commentsLoaded = true;
+                this.hideComments = false;
+            });
+        } else {
+            this.hideComments = !this.hideComments;
+        }
     }
 
     favArticle() {

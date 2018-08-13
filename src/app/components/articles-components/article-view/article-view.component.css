@@ -44,3 +44,24 @@ mat-card .content {
 .amount {
     margin: 0;
 }
+
+.writeComment {
+    display: flex;
+    align-items: end;
+    padding: 0 8px;
+}
+
+label {
+    font-weight: 500;
+    color: #ff9800;
+    margin: 8px 0 0 8px;
+}
+
+mat-form-field {
+    flex: 1;
+    margin: -16px 4px 0 0;
+}
+
+button {
+    outline: none;
+}
