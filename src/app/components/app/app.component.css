@@ -204,7 +204,7 @@ header nav.mobile mat-icon {
     align-items: baseline;
     justify-content: space-around;
     flex-wrap: wrap;
-    padding: 24px;
+    padding: 8px;
 }
 
 .assoChoiceMobileWrapper mat-icon {

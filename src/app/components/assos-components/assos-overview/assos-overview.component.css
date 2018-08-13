@@ -81,6 +81,7 @@
     flex: 1337;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
     background: #3b3b3b;
@@ -93,6 +94,8 @@
     align-items: center;
     justify-content: center;
     padding: 8px;
+    width: 142px;
+    text-align: center;
 }
 
 .statsAssosInfo mat-icon {
