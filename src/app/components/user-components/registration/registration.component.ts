@@ -48,7 +48,6 @@ export class RegistrationComponent implements OnInit {
      */
     validate() {
         this.fromInputsToUser();
-        console.log(this.userToRegister);
 
         if (!User.hasValidMail(this.userToRegister)
             || !User.hasValidPassword(this.userToRegister)

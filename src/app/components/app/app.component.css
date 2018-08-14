@@ -248,13 +248,23 @@ header nav.mobile mat-icon {
         margin: 0;
     }
 
-    /*700px min for header too, hide his content if less*/
+    /*700px min for header too, hidePwd his content if less*/
     header nav.desktop {
         display: none;
     }
 
     header nav.mobile {
         display: flex;
+    }
+}
+
+@media (min-width: 700px) {
+    mat-sidenav-content {
+        margin-left: 116px !important;
+    }
+
+    footer {
+        margin-left: 116px;
     }
 }
 

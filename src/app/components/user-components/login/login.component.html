@@ -1,6 +1,6 @@
 <div id="cardWrap">
     <mat-card id="card">
-        <form (submit)="connect()">
+        <form>
             <mat-form-field>
                 <input matInput autocomplete="username" name="mail" type="text" placeholder="Email" required
                        [(ngModel)]="userToConnect.mail"/>
@@ -9,13 +9,13 @@
             <mat-form-field>
                 <input matInput autocomplete="password" name="pwd" placeholder="Mot de passe" required
                        [(ngModel)]="userToConnect.password"
-                       [type]="hide ? 'password' : 'text'">
-                <mat-icon matSuffix (click)="hide = !hide" style="cursor: pointer">{{hide ? 'visibility' :
+                       [type]="hidePwd ? 'password' : 'text'">
+                <mat-icon matSuffix (click)="hidePwd = !hidePwd" style="cursor: pointer">{{hidePwd ? 'visibility' :
                     'visibility_off'}}
                 </mat-icon>
                 <mat-error>Vous devez entrer une valeur</mat-error>
             </mat-form-field>
-            <button class="connectButton" mat-raised-button color="primary" type="submit">
+            <button class="connectButton" mat-raised-button color="primary" (click)="connect()">
                 Se connecter
             </button>
         </form>

@@ -10,19 +10,23 @@ import {UserService} from "../../../services/user.service";
 export class LoginComponent implements OnInit {
 
     userToConnect: User;
-    hide: boolean;
+    hidePwd: boolean;
 
     constructor(private userService: UserService) {
     }
 
     ngOnInit() {
-        this.hide = true;
+        this.hidePwd = true;
         this.userToConnect = new User('', '', '', '', [], [], '');
     }
 
     connect() {
         this.userService.tryConnect(this.userToConnect).then(_ => {
-            location.href = '/';
+            this.userService.getLoggedUser().subscribe(user => {
+                if (user !== null) {
+                    location.href = '/';
+                }
+            });
         });
     }
 

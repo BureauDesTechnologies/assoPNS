@@ -43,8 +43,7 @@ import {BdaComponent} from "./components/assos-components/assos-pages/bda/bda.co
 import {AssosOverviewComponent} from "./components/assos-components/assos-overview/assos-overview.component";
 import {AssoPresentationComponent} from "./components/assos-components/asso-presentation/asso-presentation.component";
 import {HttpClientModule} from "@angular/common/http";
-import { CommentComponent } from './components/articles-components/comment/comment.component';
-import {DatePipe} from "@angular/common";
+import {CommentComponent} from './components/articles-components/comment/comment.component';
 
 @NgModule({
     declarations: [

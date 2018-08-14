@@ -1,5 +1,5 @@
 <mat-card id="card">
-    <form (submit)="validate()">
+    <form>
         <app-file-upload *ngIf="photoLink === ''" (downloadableOn)="downloadableImage($event)"
                          (uploadedOnURL)="hasUploadedPhoto($event)"></app-file-upload>
         <img *ngIf="photoLink !== ''" style="display: block; max-height: 300px; margin: auto;" [src]="photoLink">
@@ -32,7 +32,7 @@
                    [formControl]="formControlPwdConfirm" (change)="checkPwdConfirm(); checkPwd();"/>
             <mat-error *ngIf="formControlPwdConfirm.invalid">{{getPwdConfirmError()}}</mat-error>
         </mat-form-field>
-        <button class="nextStep" mat-raised-button color="primary" type="submit">
+        <button class="nextStep" mat-raised-button color="primary" (click)="validate()">
             Suivant
         </button>
     </form>

@@ -62,7 +62,7 @@ export class ArticleViewComponent implements OnInit {
     }
 
     /**
-     * Display or hide comment, only load once
+     * Display or hidePwd comment, only load once
      */
     displayOrHideComments() {
         if (!this.commentsLoaded) {

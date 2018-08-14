@@ -71,6 +71,7 @@ export class UserService {
      * @returns Promise<void> to listen when user is connected then redirect him
      */
     tryConnect(userToConnect: User): Promise<void> {
+        console.log(userToConnect);
         return firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
             .then(() => {
                 return firebase.auth().signInWithEmailAndPassword(userToConnect.mail, userToConnect.password).then(res => {
