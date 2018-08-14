@@ -58,7 +58,6 @@ export class ArticleService {
         }
         articleData.comments.forEach(async comment => {
             const user = User.fromDB(await comment.user.get());
-            console.log(comment.date);
             article.addComment(new ArticleComment(user, new Date(comment.date.seconds * 1000), comment.content));
         });
     }

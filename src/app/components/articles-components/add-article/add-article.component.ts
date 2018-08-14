@@ -11,7 +11,7 @@ import {Article} from "../../../models/article";
     styleUrls: ['./add-article.component.css']
 })
 export class AddArticleComponent implements OnInit {
-    private user: User;
+    user: User;
     articleToAdd;
 
     imageToDisplay: string;
@@ -32,7 +32,6 @@ export class AddArticleComponent implements OnInit {
             this.user = user;
             this.ref.detectChanges();
         });
-        console.log(this.user);
     }
 
     addArticleOnSubmit() {

@@ -71,7 +71,6 @@ export class UserService {
      * @returns Promise<void> to listen when user is connected then redirect him
      */
     tryConnect(userToConnect: User): Promise<void> {
-        console.log(userToConnect);
         return firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
             .then(() => {
                 return firebase.auth().signInWithEmailAndPassword(userToConnect.mail, userToConnect.password).then(res => {
@@ -157,12 +156,10 @@ export class UserService {
     }
 
     private getLoggedUserFromCache() {
-        console.log('Load user from cache');
         const docRef = this.db.collection('Users').doc(this.getLoggedFirebaseUser().uid).ref;
         docRef.get().then((doc) => {
             const user = User.fromDB(doc);
             user.supplyWithFirebaseUser(this.getLoggedFirebaseUser());
-            console.log('Finished loading user from cache :');
             this.loggedUser.next(user);
             this.updateLastConnection(user.userId);
         });

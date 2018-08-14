@@ -84,12 +84,12 @@ a:hover .bde, a .bde.active {
 
 /*BDS*/
 a .bds {
-    background: url('../../../assets/logoAssos/logoBlanc.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBDSblanc.png') center no-repeat;
     background-size: contain;
 }
 
 a:hover .bds, a .bds.active {
-    background: url('../../../assets/logoAssos/logoBDC.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBDS.png') center no-repeat;
     background-size: contain;
 }
 
@@ -128,12 +128,12 @@ a:hover .bda, a .bda.active {
 
 /*BDH*/
 a .bdh {
-    background: url('../../../assets/logoAssos/logoBlanc.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBDHblanc.png') center no-repeat;
     background-size: contain;
 }
 
 a:hover .bdh, a .bdh.active {
-    background: url('../../../assets/logoAssos/logoBDC.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBDH.png') center no-repeat;
     background-size: contain;
 }
 

@@ -40,7 +40,6 @@ export class ProfileComponent implements OnInit {
                         if (isNullOrUndefined(this.user.downloadPhotoUrl)) {
                             this.userService.getDownloadUrl(this.user.photoUrl).subscribe(link => {
                                 this.url = link;
-                                console.log(link);
                                 this.user.downloadPhotoUrl = link;
                             });
                         } else {
