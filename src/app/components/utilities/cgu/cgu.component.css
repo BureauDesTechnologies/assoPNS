@@ -1,0 +1,39 @@
+.cguWrap {
+    max-width: 1000px;
+    padding: 16px;
+    margin: auto;
+}
+
+.cguWrap p {
+    text-align: justify;
+}
+
+h1, h2, strong {
+    color: #ff9800;
+}
+
+strong.text {
+    font-weight: inherit;
+}
+
+a, a:visited {
+    color: #ff9800;
+    text-decoration: none;
+    font-weight: lighter;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#legalMentions {
+    margin: auto;
+}
+
+#legalMentions h2 {
+    font-size: larger;
+}
+
+#legalMentions h3 {
+    font-size: larger;
+}

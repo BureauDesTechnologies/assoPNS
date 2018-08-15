@@ -44,6 +44,8 @@ import {AssosOverviewComponent} from "./components/assos-components/assos-overvi
 import {AssoPresentationComponent} from "./components/assos-components/asso-presentation/asso-presentation.component";
 import {HttpClientModule} from "@angular/common/http";
 import {CommentComponent} from './components/articles-components/comment/comment.component';
+import { CguComponent } from './components/utilities/cgu/cgu.component';
+import {PncComponent} from "./components/assos-components/assos-pages/pnc/pnc.component";
 
 @NgModule({
     declarations: [
@@ -63,9 +65,11 @@ import {CommentComponent} from './components/articles-components/comment/comment
         BdjComponent,
         BdhComponent,
         BdaComponent,
+        PncComponent,
         AssosOverviewComponent,
         AssoPresentationComponent,
         CommentComponent,
+        CguComponent,
     ],
     imports: [
         BrowserModule,

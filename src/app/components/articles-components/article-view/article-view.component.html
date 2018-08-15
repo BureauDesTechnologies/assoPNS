@@ -1,11 +1,38 @@
 <mat-card>
-    <div class="content">
-        <mat-card-title>{{article.title}}</mat-card-title>
-        <mat-card-subtitle *ngIf="mustDisplayAssoName">{{article.category}}</mat-card-subtitle>
-        <p>{{article.content}}</p>
-        <img *ngIf="article.downloadableImageUrl !== '' && article.downloadableImageUrl !== undefined "
-             [src]="article.downloadableImageUrl">
-    </div>
+    <form>
+        <button mat-icon-button class="editButton"
+                *ngIf="connectedUser !== null && connectedUser.canPublishAs.includes(article.category) && !editing && !editable"
+                type=submit
+                (click)="edit()">
+            <mat-icon>create</mat-icon>
+        </button>
+        <button mat-icon-button class="editButton"
+                *ngIf="connectedUser !== null && connectedUser.canPublishAs.includes(article.category) && !editing && editable"
+                type=submit
+                (click)="edit()">
+            <mat-icon>check</mat-icon>
+        </button>
+        <mat-progress-spinner *ngIf="editing" mode="indeterminate" class="editing"
+                              [diameter]="24"></mat-progress-spinner>
+        <div class="content">
+            <mat-card-title *ngIf="editable === false">{{article.title}}</mat-card-title>
+            <mat-card-title *ngIf="editable === true">
+                <mat-form-field>
+                    <input matInput autocomplete="off" name="title" type="text" [(ngModel)]="article.title">
+                </mat-form-field>
+            </mat-card-title>
+            <mat-card-subtitle *ngIf="mustDisplayAssoName">{{article.category}}</mat-card-subtitle>
+            <p *ngIf="editable === false">
+                {{article.content}}
+            </p>
+            <textarea *ngIf="editable === true"
+                      autocomplete="off" name="content"
+                      placeholder="Contenu"
+                      [(ngModel)]="article.content"></textarea>
+            <img *ngIf="article.downloadableImageUrl !== '' && article.downloadableImageUrl !== undefined "
+                 [src]="article.downloadableImageUrl">
+        </div>
+    </form>
     <div class="actions">
         <div class="soc" (click)="displayOrHideComments()">
             <mat-icon class="comment active" *ngIf="!hideComments">chat_bubble</mat-icon>
@@ -31,17 +58,23 @@
         <div *ngIf="connectedUser !== null">
             <form>
                 <label for="comment">Poster un commentaire</label>
-                <div class="writeComment">
-                    <mat-form-field>
-                        <input matInput name="comment" id="comment" [(ngModel)]="writtenComment"/>
-                    </mat-form-field>
-                    <button mat-icon-button *ngIf="writtenComment.length > 0">
-                        <mat-icon>send</mat-icon>
-                    </button>
+                <div>
+                    <form class="writeComment">
+                        <mat-form-field>
+                            <input matInput autocomplete="off" name="comment" id="comment"
+                                   [(ngModel)]="writtenComment"/>
+                        </mat-form-field>
+                        <button mat-icon-button *ngIf="writtenComment.length > 0" type=submit class="sendComButton"
+                                (click)="postComment()">
+                            <mat-icon>send</mat-icon>
+                        </button>
+                    </form>
                 </div>
             </form>
         </div>
-        <app-comment *ngFor="let comment of article.getComments()"
-                     [comment]="comment"></app-comment>
+        <div class="commentsContainer">
+            <app-comment *ngFor="let comment of article.getComments()"
+                         [comment]="comment"></app-comment>
+        </div>
     </div>
 </mat-card>

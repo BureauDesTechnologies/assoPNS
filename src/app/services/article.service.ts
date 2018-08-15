@@ -18,7 +18,7 @@ export class ArticleService {
 
     async getDownloadImageUrl(article: Article): Promise<string> {
         if (article.imageUrl === '' || isNullOrUndefined(article.imageUrl)) {
-            throw Error("You should not try to load doawnload url on a article without imageUrl");
+            throw Error("You should not try to load download url on a article without imageUrl");
         } else {
             return this.st.ref(article.imageUrl).getDownloadURL().toPromise();
         }
@@ -48,6 +48,26 @@ export class ArticleService {
         });
     }
 
+    async postComment(article: Article, author: User, comment: string): Promise<void> {
+        // Load previous comments to avoid override
+        await this.loadComments(article);
+
+        const result = [];
+        article.addComment(new ArticleComment(author, new Date(Date.now()), comment));
+        // Convert to JSON objects
+        article.getComments().forEach(commentC => {
+            result.push({
+                author: firestore().collection('Users').doc(commentC.author.userId),
+                date: commentC.date.getTime(),
+                content: commentC.content
+            });
+        });
+
+        return firestore().collection('Articles').doc(article.id).set({
+            comments: result,
+        }, {merge: true});
+    }
+
     async loadComments(article: Article) {
         if (isNullOrUndefined(article.comments)) {
             article.comments = new Set();
@@ -56,10 +76,14 @@ export class ArticleService {
         if (isNullOrUndefined(articleData.comments)) {
             return;
         }
+        const requests = [];
         articleData.comments.forEach(async comment => {
-            const user = User.fromDB(await comment.user.get());
-            article.addComment(new ArticleComment(user, new Date(comment.date.seconds * 1000), comment.content));
+            const asyncR = comment.author.get();
+            requests.push(asyncR);
+            const user = User.fromDB(await asyncR);
+            article.addComment(new ArticleComment(user, new Date(comment.date), comment.content));
         });
+        return Promise.all(requests);
     }
 
     async getAllArticles(): Promise<Article[]> {
@@ -89,5 +113,17 @@ export class ArticleService {
             articles.push(art);
         });
         return Promise.resolve(articles);
+    }
+
+    streamLastArticles(whatToDoWithArticles) {
+        return firestore().collection('Articles')
+            .orderBy('creation', "desc").limit(10).onSnapshot(whatToDoWithArticles);
+    }
+
+    updateArticle(article: Article): Promise<void> {
+        return firestore().collection('Articles').doc(article.id).set({
+            title: article.title,
+            content: article.content,
+        }, {merge: true});
     }
 }

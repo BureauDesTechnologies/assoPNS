@@ -123,8 +123,8 @@ export class UserService {
      * @param {string} photoUrl
      * @returns {Observable<string>}
      */
-    getDownloadUrl(photoUrl: string): Observable<string> {
-        return this.st.ref(photoUrl).getDownloadURL();
+    getDownloadUrl(photoUrl: string): Promise<string> {
+        return this.st.ref(photoUrl).getDownloadURL().toPromise();
     }
 
     async getUsers(): Promise<User[]> {

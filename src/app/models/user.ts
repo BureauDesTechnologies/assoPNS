@@ -157,7 +157,9 @@ export class User {
     }
 
     static fromJSON(doc): User {
-        const user = new User(doc.firstName, doc.lastName, doc.mail, doc.photoUrl, doc.roles, doc.canPublishAs, doc.userId);
+        const user = new User(doc.firstName, doc.lastName, doc.mail, doc.photoUrl, doc.roles,
+            isNullOrUndefined(doc.canPublishAs) ? [] : doc.canPublishAs,
+            doc.userId);
         if (!isNullOrUndefined(doc.state)) {
             user.state = doc.state;
         }

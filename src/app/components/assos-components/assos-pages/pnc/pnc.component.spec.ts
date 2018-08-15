@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
 
-import {BdsComponent} from "./bds.component";
+import {PncComponent} from "./pnc.component";
 
 describe('PncComponent', () => {
-    let component: BdsComponent;
-    let fixture: ComponentFixture<BdsComponent>;
+    let component: PncComponent;
+    let fixture: ComponentFixture<PncComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [BdsComponent]
+            declarations: [PncComponent]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(BdsComponent);
+        fixture = TestBed.createComponent(PncComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

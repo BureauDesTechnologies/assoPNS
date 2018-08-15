@@ -1,5 +1,16 @@
-<p>
-    {{comment.author.firstName}} {{comment.author.lastName}}
-</p>
-<p>{{comment.content}}</p>
-<p>Le {{comment.date | date:'dd/MM à hh:mm'}}</p>
+<div class="comment">
+    <div class="photo">
+        <div *ngIf="link !== ''" class="imgProfile" [ngStyle]="getUrl()"></div>
+    </div>
+    <div class="mainContent">
+        <div class="header">
+            <p class="name">
+                {{comment.author.firstName}} {{comment.author.lastName}}
+            </p>
+            <p class="date">Le {{comment.date | date:'dd/MM à HH:mm'}}</p>
+        </div>
+        <div class="content">
+            <p>{{comment.content}}</p>
+        </div>
+    </div>
+</div>

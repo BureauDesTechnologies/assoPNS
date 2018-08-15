@@ -1,0 +1,37 @@
+.comment {
+    margin: auto 8px;
+    display: flex;
+    flex-direction: row;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.imgProfile {
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.mainContent {
+    margin-left: 8px;
+    flex: 1;
+}
+
+.name, .date {
+    margin: 0;
+}
+
+.name {
+    color: #ff9800;
+}
+
+.date {
+    opacity: 0.8;
+}

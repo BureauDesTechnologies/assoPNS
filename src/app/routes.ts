@@ -12,6 +12,8 @@ import {BdjComponent} from "./components/assos-components/assos-pages/bdj/bdj.co
 import {BdaComponent} from "./components/assos-components/assos-pages/bda/bda.component";
 import {BdhComponent} from "./components/assos-components/assos-pages/bdh/bdh.component";
 import {NgModule} from "@angular/core";
+import {CguComponent} from "./components/utilities/cgu/cgu.component";
+import {PncComponent} from "./components/assos-components/assos-pages/pnc/pnc.component";
 
 
 const appRoutes: Routes = [
@@ -21,12 +23,14 @@ const appRoutes: Routes = [
     {path: "login", component: LoginComponent},
     {path: "addArticle", component: AddArticleComponent},
     {path: "aboutAll", component: AssosOverviewComponent},
+    {path: "cgu", component: CguComponent},
     {path: "bde", component: BdeComponent},
     {path: "bds", component: BdsComponent},
     {path: "bdc", component: BdcComponent},
     {path: "bdj", component: BdjComponent},
     {path: "bda", component: BdaComponent},
     {path: "bdh", component: BdhComponent},
+    {path: "pnc", component: PncComponent},
     // {
     //     path: 'admin',
     //     loadChildren: 'src/app/components/administration/administration.module#AdministrationModule',

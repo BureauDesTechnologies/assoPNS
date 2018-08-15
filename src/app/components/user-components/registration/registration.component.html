@@ -1,7 +1,7 @@
 <mat-card id="card">
+    <app-file-upload *ngIf="photoLink === ''" (downloadableOn)="downloadableImage($event)"
+                     (uploadedOnURL)="hasUploadedPhoto($event)"></app-file-upload>
     <form>
-        <app-file-upload *ngIf="photoLink === ''" (downloadableOn)="downloadableImage($event)"
-                         (uploadedOnURL)="hasUploadedPhoto($event)"></app-file-upload>
         <img *ngIf="photoLink !== ''" style="display: block; max-height: 300px; margin: auto;" [src]="photoLink">
         <div class="names">
             <mat-form-field>

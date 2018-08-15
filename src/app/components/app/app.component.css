@@ -117,12 +117,23 @@ a:hover .bdj, a .bdj.active {
 
 /*BDA*/
 a .bda {
-    background: url('../../../assets/logoAssos/logoBlanc.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBDAblanc.png') center no-repeat;
     background-size: contain;
 }
 
 a:hover .bda, a .bda.active {
-    background: url('../../../assets/logoAssos/logoBDC.png') center no-repeat;
+    background: url('../../../assets/logoAssos/logoBDA.png') center no-repeat;
+    background-size: contain;
+}
+
+/*PNC*/
+a .pnc {
+    background: url('../../../assets/logoAssos/logoPNCblanc.png') center no-repeat;
+    background-size: contain;
+}
+
+a:hover .pnc, a .pnc.active {
+    background: url('../../../assets/logoAssos/logoPNC.png') center no-repeat;
     background-size: contain;
 }
 
@@ -152,7 +163,21 @@ footer p {
     margin: 4px auto;
 }
 
+footer a, footer a:visited, footer {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 /*region Responsive*/
+.tooSmallHeight {
+    display: none;
+}
+
 header nav.mobile {
     display: none;
 }
@@ -221,7 +246,7 @@ header nav.mobile mat-icon {
     visibility: visible !important;
 }
 
-@media (max-height: 500px) {
+@media (max-height: 500px) and (min-width: 700px) {
     mat-sidenav {
         display: none;
     }
@@ -232,6 +257,15 @@ header nav.mobile mat-icon {
 
     footer {
         margin: 0;
+    }
+
+    .tooSmallHeight {
+        display: inherit !important;
+        padding: 0;
+    }
+
+    .tooSmallHeightHide {
+        display: none !important;
     }
 }
 
@@ -258,7 +292,7 @@ header nav.mobile mat-icon {
     }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 700px) and (min-height: 500px) {
     mat-sidenav-content {
         margin-left: 116px !important;
     }

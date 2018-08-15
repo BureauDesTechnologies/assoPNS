@@ -20,6 +20,10 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLink="">Accueil<span class="sr-only">(current)</span></a>
                     </li>
+                    <li class="nav-item tooSmallHeight">
+                        <a class="nav-link" (click)="displayAssosPages = true">Les assos<span
+                                class="sr-only">(current)</span></a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" routerLink="aboutAll">Nous découvrir<span
                                 class="sr-only">(current)</span></a>
@@ -41,8 +45,9 @@
                 </ul>
             </div>
         </nav>
-        <nav class="navbar navbar-expand navbar-dark bg-dark mobile">
-            <div class="headerMobile">
+        <nav class="navbar navbar-expand navbar-dark bg-dark mobile tooSmallHeight"
+             (mouseleave)="mobileMenuOpened = false">
+            <div class="headerMobile tooSmallHeightHide">
                 <a class="navbar-brand" routerLink="">Assos PNS</a>
                 <div (click)="mobileMenuOpened = !mobileMenuOpened">
                     <mat-icon>menu</mat-icon>
@@ -53,12 +58,16 @@
                             <a class="nav-link" routerLink="aboutAll">Nous découvrir<span
                                     class="sr-only">(current)</span></a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" (click)="displayAssosPages = true">Les assos<span class="sr-only">(current)</span></a>
+                        </li>
                         <li class="nav-item" (click)="mobileMenuOpened = false">
                             <a class="nav-link" routerLink="login">Se connecter<span
                                     class="sr-only">(current)</span></a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav" [ngClass]="connectedUser !== null ? '': 'hideRouter'" (click)="mobileMenuOpened = false">
+                    <ul class="navbar-nav" [ngClass]="connectedUser !== null ? '': 'hideRouter'"
+                        (click)="mobileMenuOpened = false">
                         <li class="nav-item">
                             <a class="nav-link" routerLink="">Accueil<span class="sr-only">(current)</span></a>
                         </li>
@@ -86,7 +95,7 @@
                     </ul>
                 </div>
             </div>
-            <div *ngIf="displayAssosPages" class="assoChoiceMobileWrapper">
+            <div *ngIf="displayAssosPages" class="assoChoiceMobileWrapper ">
                 <div class="assoChoiceMobile">
                     <mat-icon (click)="displayAssosPages = false; mobileMenuOpened = false;">close</mat-icon>
                     <a routerLink="/bde" (click)="displayAssosPages = false; mobileMenuOpened = false;">
@@ -119,17 +128,23 @@
                             <div class="assoName"><p>Bureau des Arts</p></div>
                         </div>
                     </a>
+                    <a routerLink="/pnc" (click)="displayAssosPages = false; mobileMenuOpened = false;">
+                        <div class="menuItem">
+                            <div class="pnc logo active"></div>
+                            <div class="assoName"><p>Polytech Nice Conseil</p></div>
+                        </div>
+                    </a>
                     <a routerLink="/bdh" (click)="displayAssosPages = false; mobileMenuOpened = false;">
                         <div class="menuItem">
                             <div class="bdh logo active"></div>
-                            <div class="assoName"><p>Bureau de l'Humanitaire</p></div>
+                            <div class="assoName"><p>Humanitaire et Environnement</p></div>
                         </div>
                     </a>
                 </div>
             </div>
         </nav>
     </header>
-    <mat-sidenav-container (click)="mobileMenuOpened = false">
+    <mat-sidenav-container>
         <mat-sidenav opened mode="side">
             <a routerLink="/bde">
                 <div class="menuItem">
@@ -161,10 +176,16 @@
                     <div class="assoName"><p>Bureau des Arts</p></div>
                 </div>
             </a>
+            <a routerLink="/pnc">
+                <div class="menuItem">
+                    <div [class]="currentRoute.startsWith('/pnc') ? 'pnc logo active': 'pnc logo'"></div>
+                    <div class="assoName"><p>Polytech Nice Conseil</p></div>
+                </div>
+            </a>
             <a routerLink="/bdh">
                 <div class="menuItem">
                     <div [class]="currentRoute.startsWith('/bdh') ? 'bdh logo active': 'bdh logo'"></div>
-                    <div class="assoName"><p>Bureau de l'Humanitaire</p></div>
+                    <div class="assoName"><p>Humanitaire et Environnement</p></div>
                 </div>
             </a>
         </mat-sidenav>
@@ -173,6 +194,7 @@
         </mat-sidenav-content>
     </mat-sidenav-container>
     <footer>
-        <p>Un site du Bureau du code pour les associations de Polytech Nice Sophia</p>
+        <p>Un site du Bureau du code pour les associations de Polytech Nice Sophia - <a routerLink="/cgu">Conditions
+            d'utilisations</a></p>
     </footer>
 </div>

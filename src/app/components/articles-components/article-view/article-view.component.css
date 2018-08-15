@@ -8,6 +8,18 @@ mat-card .content {
     padding: 24px 24px 0 24px;
 }
 
+mat-card-title {
+    margin-right: 24px;
+}
+
+.editButton, .editing {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
 .actions {
     text-align: end;
     padding: 8px 16px;
@@ -51,6 +63,10 @@ mat-card .content {
     padding: 0 8px;
 }
 
+.commentsContainer {
+    margin-top: 8px;
+}
+
 label {
     font-weight: 500;
     color: #ff9800;
@@ -59,9 +75,31 @@ label {
 
 mat-form-field {
     flex: 1;
-    margin: -16px 4px 0 0;
+    margin: -16px 0 0 0;
 }
 
 button {
     outline: none;
+}
+
+.sendComButton {
+    margin-right: -8px;
+}
+
+/* For edition */
+mat-card-title mat-form-field {
+    display: block;
+    margin: -30px 0 -36px 0;
+}
+
+.content textarea {
+    display: block;
+    width: 100%;
+    resize: vertical;
+    background: inherit;
+    color: white;
+    padding: 4px;
+    border: solid 1px #616161;
+    border-radius: 5px;
+    margin-bottom: 8px;
 }

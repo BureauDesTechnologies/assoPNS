@@ -16,6 +16,8 @@ export class ArticleViewComponent implements OnInit {
     @Input()
     article: Article;
 
+    articleBase: Article;
+
     /**
      * Enable to display asso Name in the detail view
      * Default : false
@@ -24,6 +26,9 @@ export class ArticleViewComponent implements OnInit {
     mustDisplayAssoName: boolean;
 
     connectedUser: User = null;
+
+    editable = false;
+    editing = false;
 
     hasBeenFav: boolean;
     hasBeenClap: boolean;
@@ -47,6 +52,8 @@ export class ArticleViewComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.articleBase = new Article(this.article.id, this.article.title, this.article.content,
+            this.article.imageUrl, this.article.category, [], [], this.article.creation);
         this.userService.getLoggedUser().subscribe(user => {
             this.connectedUser = user;
             if (this.connectedUser === null) {
@@ -89,6 +96,26 @@ export class ArticleViewComponent implements OnInit {
         }
         this.hasBeenClap = true;
         this.articleService.clapArticle(this.article, this.connectedUser);
+    }
+
+    postComment() {
+        this.articleService.postComment(this.article, this.connectedUser, this.writtenComment)
+            .then(() => this.writtenComment = '');
+    }
+
+    edit() {
+        this.editable = !this.editable;
+        if (this.editable === false) {
+            if (this.article.title === this.articleBase.title && this.article.content === this.articleBase.content) {
+                return;
+            }
+            this.editing = true;
+            this.articleService.updateArticle(this.article).then(_ => {
+                this.articleBase = new Article(this.article.id, this.article.title, this.article.content,
+                    this.article.imageUrl, this.article.category, [], [], this.article.creation);
+                this.editing = false;
+            });
+        }
     }
 
 }

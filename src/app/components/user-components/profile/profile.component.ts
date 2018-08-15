@@ -14,8 +14,7 @@ export class ProfileComponent implements OnInit {
     /**
      * Used as a placeholder
      */
-    defaultImageUrl = 'https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/36726886_1687340718058441_5442986713913753600_n.jpg' +
-        '?_nc_cat=0&oh=9b1fabee280eb257a34a9111259d903d&oe=5BE90E9D';
+    defaultImageUrl = 'assets/user_placeholder.png';
     user: User;
     url = this.defaultImageUrl;
 
@@ -27,7 +26,7 @@ export class ProfileComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.userService.getLoggedUser().subscribe(user => {
+        this.userService.getLoggedUser().subscribe(async user => {
             if (user === null && this.user != null) { // Disconnect
                 this.user = null;
             } else {
@@ -38,10 +37,12 @@ export class ProfileComponent implements OnInit {
                     this.mail = this.user.mail;
                     if (this.user.photoUrl !== '' && this.user.photoUrl !== null) {
                         if (isNullOrUndefined(this.user.downloadPhotoUrl)) {
-                            this.userService.getDownloadUrl(this.user.photoUrl).subscribe(link => {
-                                this.url = link;
-                                this.user.downloadPhotoUrl = link;
-                            });
+                            // this.userService.getDownloadUrl(this.user.photoUrl).subscribe(link => {
+                            //     this.url = link;
+                            //     this.user.downloadPhotoUrl = link;
+                            // });
+                            this.user.downloadPhotoUrl = await this.userService.getDownloadUrl(this.user.photoUrl);
+                            this.url = this.user.downloadPhotoUrl;
                         } else {
                             this.url = this.user.downloadPhotoUrl;
                         }

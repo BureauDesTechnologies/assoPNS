@@ -15,4 +15,5 @@ export class ArticleComment {
     date: Date;
     author: User;
     content: string;
+
 }
