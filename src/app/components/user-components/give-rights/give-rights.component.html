@@ -1,0 +1,5 @@
+<div class="loading" *ngIf="loading">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+<app-users-list [hidden]="loading" [pageStep]="10" [title]="'Passez le pouvoir à quelqu\'un'"
+                (selectedUser)="selectUser($event)"></app-users-list>

@@ -7,6 +7,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {
     MatButtonModule,
     MatCardModule,
+    MatCheckboxModule,
+    MatDialogModule,
     MatDividerModule,
     MatFormFieldModule,
     MatIconModule,
@@ -43,11 +45,17 @@ import {BdaComponent} from "./components/assos-components/assos-pages/bda/bda.co
 import {AssosOverviewComponent} from "./components/assos-components/assos-overview/assos-overview.component";
 import {AssoPresentationComponent} from "./components/assos-components/asso-presentation/asso-presentation.component";
 import {HttpClientModule} from "@angular/common/http";
-import {CommentComponent} from './components/articles-components/comment/comment.component';
-import { CguComponent } from './components/utilities/cgu/cgu.component';
+import {CommentComponent} from "./components/articles-components/comment/comment.component";
+import {CguComponent} from "./components/utilities/cgu/cgu.component";
 import {PncComponent} from "./components/assos-components/assos-pages/pnc/pnc.component";
+import {
+    DialogGiveRightsComponent,
+    GiveRightsComponent
+} from "./components/user-components/give-rights/give-rights.component";
+import {UsersListComponent} from "./components/user-components/users-list/users-list.component";
 
 @NgModule({
+
     declarations: [
         AppComponent,
         RegistrationComponent,
@@ -70,6 +78,12 @@ import {PncComponent} from "./components/assos-components/assos-pages/pnc/pnc.co
         AssoPresentationComponent,
         CommentComponent,
         CguComponent,
+        GiveRightsComponent,
+        UsersListComponent,
+        DialogGiveRightsComponent
+    ],
+    entryComponents: [
+        DialogGiveRightsComponent
     ],
     imports: [
         BrowserModule,
@@ -87,6 +101,9 @@ import {PncComponent} from "./components/assos-components/assos-pages/pnc/pnc.co
         MatListModule,
         MatSidenavModule,
         MatProgressSpinnerModule,
+        MatCheckboxModule,
+        MatDialogModule,
+        MatSnackBarModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
         AngularFireStorageModule,

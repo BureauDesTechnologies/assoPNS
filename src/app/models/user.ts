@@ -163,13 +163,13 @@ export class User {
         if (!isNullOrUndefined(doc.state)) {
             user.state = doc.state;
         }
-        if (doc.reports !== undefined) {
-            const fromJsonToMap = new Map();
-            for (const k of Object.keys(doc.reports)) {
-                fromJsonToMap.set(k, doc.reports[k]);
-            }
-            user.reports = fromJsonToMap;
-        }
+        // if (doc.reports !== undefined) {
+        //     const fromJsonToMap = new Map();
+        //     for (const k of Object.keys(doc.reports)) {
+        //         fromJsonToMap.set(k, doc.reports[k]);
+        //     }
+        //     user.reports = fromJsonToMap;
+        // }
         return user;
     }
 

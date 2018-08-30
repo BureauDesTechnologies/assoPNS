@@ -14,6 +14,7 @@ import {BdhComponent} from "./components/assos-components/assos-pages/bdh/bdh.co
 import {NgModule} from "@angular/core";
 import {CguComponent} from "./components/utilities/cgu/cgu.component";
 import {PncComponent} from "./components/assos-components/assos-pages/pnc/pnc.component";
+import {GiveRightsComponent} from "./components/user-components/give-rights/give-rights.component";
 
 
 const appRoutes: Routes = [
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
     {path: "login", component: LoginComponent},
     {path: "addArticle", component: AddArticleComponent},
     {path: "aboutAll", component: AssosOverviewComponent},
+    {path: "giveRights", component: GiveRightsComponent},
     {path: "cgu", component: CguComponent},
     {path: "bde", component: BdeComponent},
     {path: "bds", component: BdsComponent},

@@ -7,6 +7,7 @@ import * as firebase from "firebase";
 import {firestore} from "firebase";
 import {Observable} from "rxjs/Rx";
 import UserCredential = firebase.auth.UserCredential;
+import {isNullOrUndefined} from "util";
 
 /**
  * This class contains all functions used to manage users
@@ -127,15 +128,6 @@ export class UserService {
         return this.st.ref(photoUrl).getDownloadURL().toPromise();
     }
 
-    async getUsers(): Promise<User[]> {
-        const result = [];
-        const usersSnap = await firestore().collection('Users').get();
-        usersSnap.forEach(user => {
-            result.push(User.fromDB(user));
-        });
-        return result;
-    }
-
     /**
      * Return the user from his id
      *
@@ -144,6 +136,20 @@ export class UserService {
      */
     async getUser(userId: string): Promise<User> {
         return User.fromDB((await this.db.collection<User>('Users').doc(userId).ref.get()));
+    }
+
+    /**
+     * get all users
+     *
+     * @returns {Promise<User[]>}
+     */
+    async getUsers(): Promise<User[]> {
+        const result = [];
+        const usersSnap = await firestore().collection('Users').get();
+        usersSnap.forEach(user => {
+            result.push(User.fromDB(user));
+        });
+        return result;
     }
 
     private updateLastConnection(userId: string) {
@@ -194,5 +200,22 @@ export class UserService {
     updateMailOfConnectedUser(mail: string) {
         const toUpdate = this.getLoggedFirebaseUser();
         return toUpdate.updateEmail(mail);
+    }
+
+    /**
+     * Grant new permissions to User
+     * @param user
+     * @param rightsToGrant
+     */
+    async addRightsToPublish(user: User, rightsToGrant: string[]) {
+        if (isNullOrUndefined(rightsToGrant) || rightsToGrant.length === 0) {
+            throw Error("Vous essayez d'ajouter aucun droit ... Vérifiez votre utilisation");
+        }
+        const updatedUser: User = await this.getUser(user.userId);
+        const totalRights: string[] = updatedUser.canPublishAs;
+        rightsToGrant.forEach(right => totalRights.push(right));
+        return firestore().collection('Users').doc(user.userId).update({
+            canPublishAs: totalRights
+        });
     }
 }

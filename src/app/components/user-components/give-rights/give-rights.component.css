@@ -1,0 +1,18 @@
+.loading {
+    margin: 16px auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+app-give-rights {
+    display: flex;
+    justify-content: center;
+}
+
+app-users-list {
+    flex: 1;
+}
+
+mat-progress-spinner {
+    display: inline-block;
+}

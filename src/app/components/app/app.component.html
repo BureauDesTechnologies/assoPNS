@@ -37,7 +37,7 @@
                     </li>
                     <li [ngClass]="connectedUser !== null && connectedUser.canPublishAs.length > 0 ? '': 'hideRouter'"
                         class="nav-item">
-                        <a class="nav-link" routerLink="admin">Déléguer</a>
+                        <a class="nav-link" routerLink="giveRights">Déléguer</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" (click)="disconnect()" style="cursor: pointer">Se déconnecter</a>
@@ -87,7 +87,7 @@
                         </li>
                         <li [ngClass]="connectedUser !== null && connectedUser.canPublishAs.length > 0 ? '': 'hideRouter'"
                             class="nav-item">
-                            <a class="nav-link" routerLink="admin">Déléguer</a>
+                            <a class="nav-link" routerLink="giveRights">Déléguer</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" (click)="disconnect()" style="cursor: pointer">Se déconnecter</a>

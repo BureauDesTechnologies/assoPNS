@@ -1,0 +1,23 @@
+<style>
+    .buttonWrap {
+        text-align: center;
+    }
+    .indic {
+        font-style: italic;
+        color: #ffc107;
+        font-size: smaller;
+    }
+</style>
+
+<mat-card-title>Permettre de publier en tant que
+</mat-card-title>
+<div class="rights" [hidden]="loading">
+    <mat-checkbox *ngFor="let right of userConnected.canPublishAs" color="primary" [checked]="hasOnlyChoice"
+                  (change)="changeRight(right, $event)">
+        {{right}}
+    </mat-checkbox>
+</div>
+<p class="indic">Le don de droit est définitif pour le moment, ne le donnez pas à la légère</p>
+<div class="buttonWrap">
+    <button mat-raised-button color="primary" (click)="validate()">Valider</button>
+</div>
