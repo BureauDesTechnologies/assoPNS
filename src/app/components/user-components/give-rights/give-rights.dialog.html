@@ -11,7 +11,7 @@
 
 <mat-card-title>Permettre de publier en tant que
 </mat-card-title>
-<div class="rights" [hidden]="loading">
+<div class="rights">
     <mat-checkbox *ngFor="let right of userConnected.canPublishAs" color="primary" [checked]="hasOnlyChoice"
                   (change)="changeRight(right, $event)">
         {{right}}

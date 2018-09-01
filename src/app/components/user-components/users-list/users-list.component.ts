@@ -48,7 +48,7 @@ export class UsersListComponent implements OnInit {
         });
     }
 
-    private updateList() {
+    updateList() {
         this.displayedUsers = [];
         const keywords = this.searchField.split(' ');
         this.users.forEach(user => {

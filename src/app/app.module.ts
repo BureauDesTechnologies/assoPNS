@@ -48,11 +48,13 @@ import {HttpClientModule} from "@angular/common/http";
 import {CommentComponent} from "./components/articles-components/comment/comment.component";
 import {CguComponent} from "./components/utilities/cgu/cgu.component";
 import {PncComponent} from "./components/assos-components/assos-pages/pnc/pnc.component";
+import {UsersListComponent} from "./components/user-components/users-list/users-list.component";
 import {
     DialogGiveRightsComponent,
     GiveRightsComponent
 } from "./components/user-components/give-rights/give-rights.component";
-import {UsersListComponent} from "./components/user-components/users-list/users-list.component";
+import {PopupService} from "./services/popup.service";
+import { PopupComponent } from './components/popup/popup.component';
 
 @NgModule({
 
@@ -80,10 +82,12 @@ import {UsersListComponent} from "./components/user-components/users-list/users-
         CguComponent,
         GiveRightsComponent,
         UsersListComponent,
-        DialogGiveRightsComponent
+        DialogGiveRightsComponent,
+        PopupComponent
     ],
     entryComponents: [
-        DialogGiveRightsComponent
+        DialogGiveRightsComponent,
+        PopupComponent
     ],
     imports: [
         BrowserModule,
@@ -112,7 +116,7 @@ import {UsersListComponent} from "./components/user-components/users-list/users-
         HttpClientModule,
         AppRoutingModule,
     ],
-    providers: [UserService, ArticleService, AngularFireAuth, MatIconRegistry],
+    providers: [UserService, ArticleService, PopupService, AngularFireAuth, MatIconRegistry],
     bootstrap: [AppComponent]
 })
 export class AppModule {

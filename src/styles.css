@@ -6,3 +6,15 @@
 body {
     min-height: 100vh;
 }
+
+.popupSnackBar {
+    background: transparent !important;
+    text-align: right !important;
+    max-width: 400px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.mat-snack-bar-handset {
+    max-width: 400px !important;
+}

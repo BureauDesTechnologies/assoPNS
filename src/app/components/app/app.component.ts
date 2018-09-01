@@ -2,6 +2,7 @@ import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/user";
 import {Router, RoutesRecognized} from "@angular/router";
+import {PopupService} from "../../services/popup.service";
 
 @Component({
     selector: 'app-root',
@@ -17,7 +18,7 @@ export class AppComponent implements OnInit {
     mobileMenuOpened: boolean;
     displayAssosPages: boolean;
 
-    constructor(private userService: UserService, private ref: ChangeDetectorRef, private route: Router) {
+    constructor(private userService: UserService, private popupService: PopupService, private ref: ChangeDetectorRef, private route: Router) {
         this.currentRoute = '';
         this.mobileMenuOpened = false;
         this.displayAssosPages = false;
@@ -34,6 +35,9 @@ export class AppComponent implements OnInit {
             this.connectedUser = user;
             this.ref.detectChanges();
         });
+        setTimeout(() => {
+            this.popupService.openCookiePopup();
+        }, 1500);
     }
 
     disconnect() {

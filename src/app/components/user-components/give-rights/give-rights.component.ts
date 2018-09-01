@@ -14,6 +14,7 @@ export class GiveRightsComponent implements OnInit {
 
     loading: boolean;
     private dialogRef;
+
     constructor(private userService: UserService, private ref: ChangeDetectorRef,
                 private dialog: MatDialog, private snackBar: MatSnackBar) {
         this.user = new User('', '', '', '', [], [], 'placeholder');
@@ -52,7 +53,7 @@ export interface DialogData {
 }
 
 @Component({
-    selector: 'app-dialog-set-admin',
+    selector: 'app-dialog-give-rights',
     templateUrl: 'give-rights.dialog.html',
 })
 export class DialogGiveRightsComponent {
@@ -62,13 +63,14 @@ export class DialogGiveRightsComponent {
 
     private giveRights: string[] = [];
     hasOnlyChoice;
+
     constructor(public dialogRef: MatDialogRef<DialogGiveRightsComponent>,
                 private userService: UserService,
                 @Inject(MAT_DIALOG_DATA) public data: DialogData) {
         this.user = data.user;
         this.userConnected = data.userConnected;
         this.hasOnlyChoice = this.userConnected.canPublishAs.length === 1;
-        if(this.hasOnlyChoice) {
+        if (this.hasOnlyChoice) {
             this.giveRights.push(this.userConnected.canPublishAs[0]);
         }
     }
@@ -85,7 +87,6 @@ export class DialogGiveRightsComponent {
             }
             this.giveRights = aux;
         }
-        console.log(this.giveRights);
     }
 
     validate() {
