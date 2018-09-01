@@ -9,6 +9,8 @@ export class PopupComponent implements OnInit {
 
     @Input()
     text: string;
+    @Input()
+    validateLabel = "";
 
     isDisplayed = true;
 
@@ -20,5 +22,6 @@ export class PopupComponent implements OnInit {
 
     close() {
         this.isDisplayed = false;
+        localStorage.setItem("knowCookies", JSON.stringify(true));
     }
 }

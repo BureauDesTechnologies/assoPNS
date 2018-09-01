@@ -19,13 +19,10 @@ export class PopupService {
             duration: 600000,
             panelClass: 'popupSnackBar',
             horizontalPosition: 'right',
-            data: {
-                text: "testInjection"
-            }
         });
-        // console.log(this.currentPopup.instance);
         this.currentPopup.instance.text = "Nous utilisons des cookies pour améliorer votre navigation, " +
             "pour en savoir plus, consultez les conditions d'utilisation.";
+        this.currentPopup.instance.validateLabel = "OK";
     }
 
 
@@ -35,7 +32,6 @@ export class PopupService {
             panelClass: 'popupSnackBar',
             horizontalPosition: 'right',
         });
-        // console.log(this.currentPopup.instance);
         this.currentPopup.instance.text = text;
     }
 

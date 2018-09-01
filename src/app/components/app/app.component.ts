@@ -35,9 +35,13 @@ export class AppComponent implements OnInit {
             this.connectedUser = user;
             this.ref.detectChanges();
         });
-        setTimeout(() => {
-            this.popupService.openCookiePopup();
-        }, 1500);
+        // Open popup to inform of cookie using
+        if (localStorage.getItem("knowCookies") !== 'true') {
+            setTimeout(() => {
+                // Must open only if the user never said ok
+                this.popupService.openCookiePopup();
+            }, 1500);
+        }
     }
 
     disconnect() {
