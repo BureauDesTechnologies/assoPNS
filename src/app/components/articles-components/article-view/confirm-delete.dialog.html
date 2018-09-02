@@ -1,0 +1,20 @@
+<style>
+    .buttons {
+        display: flex;
+        justify-content: center;
+    }
+
+    button {
+        margin: 4px;
+    }
+</style>
+
+<p>Êtes vous sur de vouloir supprimer cet article ? Cela est irréversible.</p>
+<div class="buttons">
+    <button mat-raised-button color="primary" (click)="validate()">
+        Je suis sûr
+    </button>
+    <button mat-raised-button color="primary" (click)="cancel()">
+        Annuler
+    </button>
+</div>

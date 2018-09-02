@@ -8,12 +8,15 @@
                            [(ngModel)]="articleToAdd.title"/>
                     <mat-error>Ce champ doit être renseigné</mat-error>
                 </mat-form-field>
-                <mat-select required placeholder="Publier en tant que"
+                <mat-select *ngIf="user.canPublishAs.length > 1" required placeholder="Publier en tant que"
                             (selectionChange)="articleToAdd.category = $event.value" id="category">
                     <mat-option *ngFor="let publishAs of user.canPublishAs" [value]="publishAs">
                         {{publishAs}}
                     </mat-option>
                 </mat-select>
+                <div *ngIf="user.canPublishAs.length === 1">
+                    <p>{{user.canPublishAs[0]}}</p>
+                </div>
             </div>
             <mat-form-field>
             <textarea matInput name="content" type="text" placeholder="Contenu" required

@@ -30,6 +30,9 @@ export class AddArticleComponent implements OnInit {
                 return;
             }
             this.user = user;
+            if (this.user.canPublishAs.length === 1) {
+                this.articleToAdd.category = this.user.canPublishAs[0];
+            }
             this.ref.detectChanges();
         });
     }
@@ -39,6 +42,9 @@ export class AddArticleComponent implements OnInit {
             this.articleService.addArticle(this.articleToAdd).then(_ => {
                 this.snackbar.open('L\'article a été ajouté', null, {duration: 1500});
             });
+            setTimeout(() => {
+                location.href = "/";
+            }, 1500);
         } else {
             this.snackbar.open('Veuillez renseigner les champs obligatoires', null, {duration: 1500});
         }

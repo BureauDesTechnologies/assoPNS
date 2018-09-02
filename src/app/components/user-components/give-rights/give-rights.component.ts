@@ -41,7 +41,7 @@ export class GiveRightsComponent implements OnInit {
         });
         this.dialogRef.afterClosed().subscribe(result => {
             if (result) {
-                this.snackBar.open('Cet utilisateur peut désormais publier comme défini');
+                this.snackBar.open('Cet utilisateur peut désormais publier comme défini', null, {duration: 2500});
             }
         });
     }

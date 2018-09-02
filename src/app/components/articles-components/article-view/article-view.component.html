@@ -1,17 +1,25 @@
 <mat-card>
     <form>
-        <button mat-icon-button class="editButton"
-                *ngIf="connectedUser !== null && connectedUser.canPublishAs.includes(article.category) && !editing && !editable"
-                type=submit
-                (click)="edit()">
-            <mat-icon>create</mat-icon>
-        </button>
-        <button mat-icon-button class="editButton"
-                *ngIf="connectedUser !== null && connectedUser.canPublishAs.includes(article.category) && !editing && editable"
-                type=submit
-                (click)="edit()">
-            <mat-icon>check</mat-icon>
-        </button>
+        <div class="options">
+            <button mat-icon-button class="editButton"
+                    *ngIf="connectedUser !== null && connectedUser.canPublishAs.includes(article.category) && !editing && !editable"
+                    type=submit
+                    (click)="edit()">
+                <mat-icon>create</mat-icon>
+            </button>
+            <button mat-icon-button class="editButton"
+                    *ngIf="connectedUser !== null && connectedUser.canPublishAs.includes(article.category) && !editing && editable"
+                    type=submit
+                    (click)="edit()">
+                <mat-icon>check</mat-icon>
+            </button>
+            <button mat-icon-button class="editButton"
+                    *ngIf="connectedUser !== null && connectedUser.canPublishAs.includes(article.category) && !editing && !editable"
+                    type=submit
+                    (click)="confirmDelete()">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
         <mat-progress-spinner *ngIf="editing" mode="indeterminate" class="editing"
                               [diameter]="24"></mat-progress-spinner>
         <div class="content">

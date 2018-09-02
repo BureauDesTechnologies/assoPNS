@@ -20,4 +20,17 @@ export class PncComponent implements OnInit {
         this.loading = false;
     }
 
+    /**
+     * Use to remove article from current list when has been deleted (the trigger only triggers when true)
+     * @param {article} article
+     */
+    remove(article: Article) {
+        const newList = [];
+        for (let i = 0; i < this.articles.length; ++i) {
+            if (this.articles[i].id !== article.id) {
+                newList.push(this.articles[i]);
+            }
+        }
+        this.articles = newList;
+    }
 }

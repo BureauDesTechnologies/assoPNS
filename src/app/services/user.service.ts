@@ -6,8 +6,8 @@ import {BehaviorSubject} from "rxjs";
 import * as firebase from "firebase";
 import {firestore} from "firebase";
 import {Observable} from "rxjs/Rx";
-import UserCredential = firebase.auth.UserCredential;
 import {isNullOrUndefined} from "util";
+import UserCredential = firebase.auth.UserCredential;
 
 /**
  * This class contains all functions used to manage users
@@ -213,9 +213,10 @@ export class UserService {
         }
         const updatedUser: User = await this.getUser(user.userId);
         const totalRights: string[] = updatedUser.canPublishAs;
+        const totalUniqueRights: string[] = totalRights.filter((x, i, a) => a.indexOf(x) === i);
         rightsToGrant.forEach(right => totalRights.push(right));
         return firestore().collection('Users').doc(user.userId).update({
-            canPublishAs: totalRights
+            canPublishAs: totalUniqueRights
         });
     }
 }

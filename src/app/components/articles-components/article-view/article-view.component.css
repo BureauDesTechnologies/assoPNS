@@ -12,12 +12,18 @@ mat-card-title {
     margin-right: 24px;
 }
 
-.editButton, .editing {
+.options {
     position: absolute;
     top: 16px;
     right: 16px;
+    display: flex;
+}
+
+.editButton, .editing {
     opacity: 0.6;
     cursor: pointer;
+    width: 30px;
+    height: 30px;
 }
 
 .actions {
@@ -31,7 +37,6 @@ mat-card-title {
 .actions mat-icon {
     width: 24px;
     height: 24px;
-    margin: 4px;
 }
 
 .actions mat-icon.active {

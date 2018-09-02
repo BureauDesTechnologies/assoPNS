@@ -34,6 +34,10 @@ export class ArticleService {
         });
     }
 
+    deleteArticle(article: Article) {
+        return firestore().collection('Articles').doc(article.id).delete();
+    }
+
     favArticle(article: Article, user: User) {
         article.favorite.add(user.userId);
         firestore().collection('Articles').doc(article.id).update({

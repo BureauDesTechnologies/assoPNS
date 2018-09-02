@@ -1,11 +1,12 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, EventEmitter, Inject, Input, OnInit, Output} from "@angular/core";
 import {Article} from "../../../models/article";
-import {MatIconRegistry} from "@angular/material";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatIconRegistry, MatSnackBar} from "@angular/material";
 import {DomSanitizer} from "@angular/platform-browser";
 import {UserService} from "../../../services/user.service";
 import {User} from "../../../models/user";
 import {isNullOrUndefined} from "util";
 import {ArticleService} from "../../../services/article.service";
+import {DialogGiveRightsComponent} from "../../user-components/give-rights/give-rights.component";
 
 @Component({
     selector: 'app-article-view',
@@ -25,6 +26,9 @@ export class ArticleViewComponent implements OnInit {
     @Input()
     mustDisplayAssoName: boolean;
 
+    @Output()
+    hasBeenDeleted = new EventEmitter<boolean>();
+
     connectedUser: User = null;
 
     editable = false;
@@ -39,7 +43,8 @@ export class ArticleViewComponent implements OnInit {
     writtenComment: string;
 
     constructor(private userService: UserService, private articleService: ArticleService,
-                private icons: MatIconRegistry, private domSanitizer: DomSanitizer) {
+                private icons: MatIconRegistry, private domSanitizer: DomSanitizer,
+                private dialog: MatDialog, private snackbar: MatSnackBar) {
         this.mustDisplayAssoName = false;
         this.hasBeenFav = false;
         this.hasBeenClap = false;
@@ -118,4 +123,46 @@ export class ArticleViewComponent implements OnInit {
         }
     }
 
+    confirmDelete() {
+        const dialogRef = this.dialog.open(DialogConfirmDeleteComponent, {
+            maxWidth: '600px',
+            minWidth: '200px',
+            data: {article: this.article}
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.articleService.deleteArticle(this.article).then(() => {
+                    this.snackbar.open("L'article a été supprimé", null, {duration: 1500});
+                    this.hasBeenDeleted.emit(true);
+                });
+            }
+        });
+    }
+}
+
+
+export interface DialogData {
+    article: Article;
+}
+
+@Component({
+    selector: 'app-dialog-confirm-delete',
+    templateUrl: 'confirm-delete.dialog.html',
+})
+export class DialogConfirmDeleteComponent {
+
+    article: Article;
+
+    constructor(public dialogRef: MatDialogRef<DialogGiveRightsComponent>,
+                @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+        this.article = data.article;
+    }
+
+    validate() {
+        this.dialogRef.close(true);
+    }
+
+    cancel() {
+        this.dialogRef.close(false);
+    }
 }
