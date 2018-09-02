@@ -56,13 +56,14 @@ export class RegistrationComponent implements OnInit {
             return;
         } else {
             // register User in Firebase
-            this.userService.registerUser(this.userToRegister)
-                .catch(error => {
-                    console.error(error);
-                    this.formControlMail.setErrors({
-                        badMail: true
-                    });
+            this.userService.registerUser(this.userToRegister).then(_ => {
+                location.href = "/";
+            }).catch(error => {
+                console.error(error);
+                this.formControlMail.setErrors({
+                    badMail: true
                 });
+            });
         }
     }
 
