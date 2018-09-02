@@ -4,12 +4,24 @@ mat-card {
     padding: 0;
 }
 
+mat-card-title {
+    margin-right: 24px;
+}
+
 mat-card .content {
     padding: 24px 24px 0 24px;
 }
 
-mat-card-title {
-    margin-right: 24px;
+.articleContent {
+    margin: 0 auto;
+}
+
+.content img {
+    display: inherit;
+    border-radius: 3px;
+    max-width: 100%;
+    max-height: 570px;
+    margin: 8px auto 4px auto;
 }
 
 .options {
@@ -59,7 +71,7 @@ mat-card-title {
 }
 
 .amount {
-    margin: 0;
+    margin: 0 0 0 4px;
 }
 
 .writeComment {

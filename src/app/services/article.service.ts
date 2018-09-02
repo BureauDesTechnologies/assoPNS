@@ -52,6 +52,20 @@ export class ArticleService {
         });
     }
 
+    unfavArticle(article: Article, user: User) {
+        article.favorite.delete(user.userId);
+        firestore().collection('Articles').doc(article.id).update({
+            favorite: [...Array.from(article.favorite.keys())],
+        });
+    }
+
+    unclapArticle(article: Article, user: User) {
+        article.clap.delete(user.userId);
+        firestore().collection('Articles').doc(article.id).update({
+            clap: [...Array.from(article.clap.keys())],
+        });
+    }
+
     async postComment(article: Article, author: User, comment: string): Promise<void> {
         // Load previous comments to avoid override
         await this.loadComments(article);

@@ -30,9 +30,13 @@
                 </mat-form-field>
             </mat-card-title>
             <mat-card-subtitle *ngIf="mustDisplayAssoName">{{article.category}}</mat-card-subtitle>
-            <p *ngIf="editable === false">
-                {{article.content}}
-            </p>
+
+            <div *ngIf="editable === false">
+                <p class="articleContent" *ngFor="let line of article.content.split('\n')">
+                    {{line}}
+                    <br>
+                </p>
+            </div>
             <textarea *ngIf="editable === true"
                       autocomplete="off" name="content"
                       placeholder="Contenu"
@@ -50,13 +54,13 @@
         </div>
 
         <div class="soc">
-            <mat-icon class="clap" *ngIf="hasBeenClap" svgIcon="clap"></mat-icon>
+            <mat-icon class="clap active" *ngIf="hasBeenClap" (click)="unclapArticle()" svgIcon="clap"></mat-icon>
             <mat-icon class="active" (click)="clapArticle()" *ngIf="!hasBeenClap" svgIcon="clap_outlined"></mat-icon>
             <p class="amount">{{article.clap.size}}</p>
         </div>
 
         <div class="soc">
-            <mat-icon class="favorite" *ngIf="hasBeenFav">favorite</mat-icon>
+            <mat-icon class="favorite active" *ngIf="hasBeenFav" (click)="unfavArticle()">favorite</mat-icon>
             <mat-icon class="active" (click)="favArticle()" *ngIf="!hasBeenFav">favorite_border</mat-icon>
             <p class="amount">{{article.favorite.size}}</p>
         </div>

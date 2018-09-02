@@ -103,6 +103,22 @@ export class ArticleViewComponent implements OnInit {
         this.articleService.clapArticle(this.article, this.connectedUser);
     }
 
+    unfavArticle() {
+        if (isNullOrUndefined(this.connectedUser)) {
+            return;
+        }
+        this.hasBeenFav = false;
+        this.articleService.unfavArticle(this.article, this.connectedUser);
+    }
+
+    unclapArticle() {
+        if (isNullOrUndefined(this.connectedUser)) {
+            return;
+        }
+        this.hasBeenClap = false;
+        this.articleService.unclapArticle(this.article, this.connectedUser);
+    }
+
     postComment() {
         this.articleService.postComment(this.article, this.connectedUser, this.writtenComment)
             .then(() => this.writtenComment = '');
