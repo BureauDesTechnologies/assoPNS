@@ -5,7 +5,7 @@ import {User} from "../models/user";
 import {BehaviorSubject} from "rxjs";
 import * as firebase from "firebase";
 import {firestore} from "firebase";
-import {Observable} from "rxjs/Rx";
+import {Observable} from "rxjs-compat/Observable";
 import {isNullOrUndefined} from "util";
 import UserCredential = firebase.auth.UserCredential;
 

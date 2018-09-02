@@ -4,7 +4,7 @@
         <div class="form">
             <div class="firstForm">
                 <mat-form-field id="title">
-                    <input matInput name="title" type="text" placeholder="Titre" required
+                    <input matInput name="title" type="text" placeholder="Titre" required autocomplete="off"
                            [(ngModel)]="articleToAdd.title"/>
                     <mat-error>Ce champ doit être renseigné</mat-error>
                 </mat-form-field>
