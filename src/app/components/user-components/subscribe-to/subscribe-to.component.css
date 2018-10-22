@@ -1,0 +1,12 @@
+mat-card {
+    max-width: 800px;
+    margin: 8px auto;
+}
+
+mat-checkbox {
+    display: block;
+}
+
+.buttonWrap {
+    text-align: center;
+}

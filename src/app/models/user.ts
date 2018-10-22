@@ -29,7 +29,16 @@ export class User {
     }
 
     private _downloadPhotoUrl: string;
+    private _subscriptions: string[];
 
+
+    get subscriptions(): string[] {
+        return this._subscriptions;
+    }
+
+    set subscriptions(value: string[]) {
+        this._subscriptions = value;
+    }
 
     get downloadPhotoUrl(): string {
         return this._downloadPhotoUrl;
@@ -163,6 +172,11 @@ export class User {
         if (!isNullOrUndefined(doc.state)) {
             user.state = doc.state;
         }
+        if (!isNullOrUndefined(doc.subscriptions)) {
+            user.subscriptions = doc.subscriptions;
+        } else {
+            user.subscriptions = [];
+        }
         // if (doc.reports !== undefined) {
         //     const fromJsonToMap = new Map();
         //     for (const k of Object.keys(doc.reports)) {
@@ -190,4 +204,3 @@ export enum UserState {
     DEAD,
     ALIVE
 }
-

@@ -34,7 +34,10 @@ import {FileUploadComponent} from "./components/utilities/file-upload/file-uploa
 import {LoginComponent} from "./components/user-components/login/login.component";
 import {ProfileComponent} from "./components/user-components/profile/profile.component";
 import {HomeComponent} from "./components/articles-components/home/home.component";
-import {ArticleViewComponent, DialogConfirmDeleteComponent} from "./components/articles-components/article-view/article-view.component";
+import {
+    ArticleViewComponent,
+    DialogConfirmDeleteComponent
+} from "./components/articles-components/article-view/article-view.component";
 import {AddArticleComponent} from "./components/articles-components/add-article/add-article.component";
 import {BdcComponent} from "./components/assos-components/assos-pages/bdc/bdc.component";
 import {BdeComponent} from "./components/assos-components/assos-pages/bde/bde.component";
@@ -49,9 +52,13 @@ import {CommentComponent} from "./components/articles-components/comment/comment
 import {CguComponent} from "./components/utilities/cgu/cgu.component";
 import {PncComponent} from "./components/assos-components/assos-pages/pnc/pnc.component";
 import {UsersListComponent} from "./components/user-components/users-list/users-list.component";
-import {DialogGiveRightsComponent, GiveRightsComponent} from "./components/user-components/give-rights/give-rights.component";
+import {
+    DialogGiveRightsComponent,
+    GiveRightsComponent
+} from "./components/user-components/give-rights/give-rights.component";
 import {PopupService} from "./services/popup.service";
-import {PopupComponent} from './components/popup/popup.component';
+import {PopupComponent} from "./components/popup/popup.component";
+import {SubscribeToComponent} from "./components/user-components/subscribe-to/subscribe-to.component";
 
 @NgModule({
 
@@ -81,7 +88,8 @@ import {PopupComponent} from './components/popup/popup.component';
         UsersListComponent,
         DialogGiveRightsComponent,
         PopupComponent,
-        DialogConfirmDeleteComponent
+        DialogConfirmDeleteComponent,
+        SubscribeToComponent
     ],
     entryComponents: [
         DialogGiveRightsComponent,

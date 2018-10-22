@@ -8,12 +8,40 @@ import {isNullOrUndefined} from "util";
 import {ArticleService} from "../../../services/article.service";
 import {DialogGiveRightsComponent} from "../../user-components/give-rights/give-rights.component";
 
+export class ArticleToken {
+    type: TokenType;
+    data;
+
+    constructor(type: TokenType, data: ArticleToken[] | string | null) {
+        this.type = type;
+        this.data = data;
+    }
+}
+
+export enum TokenType {
+    LINE = 0,
+    TEXT = 1,
+    EMOTE = 2
+}
+
 @Component({
     selector: 'app-article-view',
     templateUrl: './article-view.component.html',
     styleUrls: ['./article-view.component.css']
 })
 export class ArticleViewComponent implements OnInit {
+
+    /**
+     * First element is the emote text, second is the link of the img to display
+     * @type {MapConstructor<string, string>}
+     */
+    private static emotes: Map<string, string> = new Map(
+        [
+            [':)', 'assets/emotes/smile.png'],
+            [':D', 'assets/emotes/big_smile.png']
+        ]
+    );
+
     @Input()
     article: Article;
 
@@ -41,6 +69,8 @@ export class ArticleViewComponent implements OnInit {
     hideComments = true;
 
     writtenComment: string;
+
+    tokens;
 
     constructor(private userService: UserService, private articleService: ArticleService,
                 private icons: MatIconRegistry, private domSanitizer: DomSanitizer,
@@ -71,6 +101,7 @@ export class ArticleViewComponent implements OnInit {
                 this.hasBeenFav = true;
             }
         });
+        this.tokens = this.tokenize(this.article);
     }
 
     /**
@@ -134,6 +165,7 @@ export class ArticleViewComponent implements OnInit {
             this.articleService.updateArticle(this.article).then(_ => {
                 this.articleBase = new Article(this.article.id, this.article.title, this.article.content,
                     this.article.imageUrl, this.article.category, [], [], this.article.creation);
+                this.tokens = this.tokenize(this.article);
                 this.editing = false;
             });
         }
@@ -154,8 +186,33 @@ export class ArticleViewComponent implements OnInit {
             }
         });
     }
-}
 
+    tokenize(article: Article): ArticleToken[] {
+        const tokens: ArticleToken[] = [];
+        for (const line of article.content.split('\n')) {
+            tokens.push(new ArticleToken(TokenType.LINE, this.tokenizeLine(line)));
+        }
+        return tokens;
+    }
+
+    private tokenizeLine(lineIn: string): ArticleToken[] {
+        const tokens: ArticleToken[] = [];
+        let line = '';
+        for (const word of lineIn.split(' ')) {
+            if (ArticleViewComponent.emotes.has(word)) {
+                tokens.push(new ArticleToken(TokenType.TEXT, line));
+                tokens.push(new ArticleToken(TokenType.EMOTE, ArticleViewComponent.emotes.get(word)));
+                line = '';
+            } else {
+                line += word + ' ';
+            }
+        }
+        if (line.length > 0) {
+            tokens.push(new ArticleToken(TokenType.TEXT, line));
+        }
+        return tokens;
+    }
+}
 
 export interface DialogData {
     article: Article;

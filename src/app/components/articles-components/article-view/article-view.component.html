@@ -32,10 +32,18 @@
             <mat-card-subtitle *ngIf="mustDisplayAssoName">{{article.category}}</mat-card-subtitle>
 
             <div *ngIf="editable === false">
-                <p class="articleContent" *ngFor="let line of article.content.split('\n')">
-                    {{line}}
-                    <br>
-                </p>
+                <div class="articleContent" *ngFor="let token of tokens">
+                    <p class="articleLine" *ngIf="token.type === 0"> <!-- For lines -->
+                        <span *ngFor="let lineToken of token.data" style="display: contents"><!-- For each token of line -->
+                            <span style="display: contents" *ngIf="lineToken.type == 1">
+                                {{lineToken.data}}
+                            </span>
+                            <!-- if is text -->
+                            <img class="emote" *ngIf="lineToken.type == 2" [src]="lineToken.data"> <!-- if is emote -->
+                        </span>
+                        <br>
+                    </p>
+                </div>
             </div>
             <textarea *ngIf="editable === true"
                       autocomplete="off" name="content"

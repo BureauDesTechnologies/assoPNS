@@ -185,6 +185,12 @@ export class UserService {
         });
     }
 
+    updateSubscriptions(user: User) {
+        return this.db.collection('Users').doc(user.userId).update({
+            'subscriptions': user.subscriptions
+        });
+    }
+
     updateFirstName(user: User, firstName: string) {
         return this.db.collection('Users').doc(user.userId).update({
             'firstName': firstName

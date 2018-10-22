@@ -57,6 +57,7 @@ export class ArticleService {
         firestore().collection('Articles').doc(article.id).update({
             favorite: [...Array.from(article.favorite.keys())],
         });
+        console.log('coucou');
     }
 
     unclapArticle(article: Article, user: User) {

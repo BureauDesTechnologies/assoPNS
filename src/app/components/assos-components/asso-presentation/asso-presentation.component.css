@@ -14,6 +14,7 @@
 
 .logoTitle {
     width: 75px;
+    /*noinspection CssNegativeValue*/
     order: -1;
 }
 
@@ -37,7 +38,7 @@
 
 .title .name h1 {
     font-size: 2rem;
-    color: #ff9800;
+    color: #64dd17;
     margin: 0 8px;
 }
 
@@ -74,7 +75,7 @@
 
 .contact {
     text-align: center;
-    color: #ff9800;
+    color: #64dd17;
     font-weight: 300;
     padding-left: 75px;
 }

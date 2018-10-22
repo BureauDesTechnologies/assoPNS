@@ -303,3 +303,7 @@ header nav.mobile mat-icon {
 }
 
 /*endregion*/
+
+.nav-link {
+    transition: all .3s;
+}
