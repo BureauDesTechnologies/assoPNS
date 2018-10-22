@@ -4,6 +4,7 @@ import {MatButton, MatCard, MatFormField, MatSelect} from "@angular/material";
 import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
 import {isNullOrUndefined} from "util";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-registration',
@@ -27,7 +28,7 @@ export class RegistrationComponent implements OnInit {
     photoLink = '';
     private fileUploaded = false;
 
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService, private router: Router) {
     }
 
     private _userToRegister: User;
@@ -57,7 +58,7 @@ export class RegistrationComponent implements OnInit {
         } else {
             // register User in Firebase
             this.userService.registerUser(this.userToRegister).then(_ => {
-                location.href = "/";
+                this.router.navigate(['/']);
             }).catch(error => {
                 console.error(error);
                 this.formControlMail.setErrors({

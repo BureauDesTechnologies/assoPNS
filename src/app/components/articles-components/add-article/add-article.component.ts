@@ -4,6 +4,7 @@ import {UserService} from "../../../services/user.service";
 import {ArticleService} from "../../../services/article.service";
 import {MatSnackBar} from "@angular/material";
 import {Article} from "../../../models/article";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-add-article',
@@ -18,7 +19,7 @@ export class AddArticleComponent implements OnInit {
 
 
     constructor(private userService: UserService, private articleService: ArticleService,
-                private snackbar: MatSnackBar, private ref: ChangeDetectorRef) {
+                private snackbar: MatSnackBar, private ref: ChangeDetectorRef, private router: Router) {
         this.articleToAdd = new Article('', '', '', '', '', [], [], new Date(Date.now()));
         this.user = new User('', '', '', '', [], [], 'placeholder');
         this.imageToDisplay = '';
@@ -43,7 +44,7 @@ export class AddArticleComponent implements OnInit {
                 this.snackbar.open('L\'article a été ajouté', null, {duration: 1500});
             });
             setTimeout(() => {
-                location.href = "/";
+                this.router.navigate(['/']);
             }, 1500);
         } else {
             this.snackbar.open('Veuillez renseigner les champs obligatoires', null, {duration: 1500});

@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
     userToConnect: User;
     hidePwd: boolean;
 
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService, private router: Router) {
     }
 
     ngOnInit() {
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
         this.userService.tryConnect(this.userToConnect).then(_ => {
             this.userService.getLoggedUser().subscribe(user => {
                 if (user !== null) {
-                    location.href = '/';
+                    this.router.navigate(['/']);
                 }
             });
         });

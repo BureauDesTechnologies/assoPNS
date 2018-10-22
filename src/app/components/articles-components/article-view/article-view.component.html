@@ -39,7 +39,8 @@
                                 {{lineToken.data}}
                             </span>
                             <!-- if is text -->
-                            <img class="emote" *ngIf="lineToken.type == 2" [src]="lineToken.data"> <!-- if is emote -->
+                            <img class="emote" *ngIf="lineToken.type == 2" [alt]="lineToken.data.text"
+                                 [src]="lineToken.data.url"> <!-- if is emote -->
                         </span>
                         <br>
                     </p>

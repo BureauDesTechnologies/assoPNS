@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
 import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
+import {MatSnackBar} from "@angular/material";
 
 @Component({
     selector: 'app-subscribe-to',
@@ -23,7 +24,7 @@ export class SubscribeToComponent implements OnInit {
         "Polytech Nice Conseil"
     ];
 
-    constructor(private userService: UserService, private ref: ChangeDetectorRef) {
+    constructor(private userService: UserService, private ref: ChangeDetectorRef, private snackbar: MatSnackBar) {
     }
 
     ngOnInit() {
@@ -43,7 +44,8 @@ export class SubscribeToComponent implements OnInit {
 
     validate() {
         this.user.subscriptions = this.subscriptions;
-        this.userService.updateSubscriptions(this.user).then(res => {
+        this.userService.updateSubscriptions(this.user).then(() => {
+            this.snackbar.open('Vos abonnements ont été mis à jour', null, {duration: 1500});
         });
     }
 

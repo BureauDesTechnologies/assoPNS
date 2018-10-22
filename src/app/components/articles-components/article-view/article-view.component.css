@@ -124,5 +124,5 @@ mat-card-title mat-form-field {
 .articleContent .emote {
     display: inline-block;
     height: 16px;
-    margin: 4px;
+    margin: 0;
 }

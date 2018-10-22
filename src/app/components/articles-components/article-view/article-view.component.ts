@@ -109,7 +109,7 @@ export class ArticleViewComponent implements OnInit {
      */
     displayOrHideComments() {
         if (!this.commentsLoaded) {
-            this.articleService.loadComments(this.article).then(_ => {
+            this.articleService.loadComments(this.article).then(() => {
                 this.commentsLoaded = true;
                 this.hideComments = false;
             });
@@ -162,7 +162,7 @@ export class ArticleViewComponent implements OnInit {
                 return;
             }
             this.editing = true;
-            this.articleService.updateArticle(this.article).then(_ => {
+            this.articleService.updateArticle(this.article).then(() => {
                 this.articleBase = new Article(this.article.id, this.article.title, this.article.content,
                     this.article.imageUrl, this.article.category, [], [], this.article.creation);
                 this.tokens = this.tokenize(this.article);
@@ -201,7 +201,10 @@ export class ArticleViewComponent implements OnInit {
         for (const word of lineIn.split(' ')) {
             if (ArticleViewComponent.emotes.has(word)) {
                 tokens.push(new ArticleToken(TokenType.TEXT, line));
-                tokens.push(new ArticleToken(TokenType.EMOTE, ArticleViewComponent.emotes.get(word)));
+                tokens.push(new ArticleToken(TokenType.EMOTE, {
+                    text: word,
+                    url: ArticleViewComponent.emotes.get(word)
+                }));
                 line = '';
             } else {
                 line += word + ' ';

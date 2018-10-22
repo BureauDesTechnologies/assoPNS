@@ -246,7 +246,7 @@ header nav.mobile mat-icon {
     visibility: visible !important;
 }
 
-@media (max-height: 500px) and (min-width: 700px) {
+@media (max-height: 500px) and (min-width: 735px) {
     mat-sidenav {
         display: none;
     }
@@ -269,7 +269,7 @@ header nav.mobile mat-icon {
     }
 }
 
-@media (max-width: 699px) {
+@media (max-width: 734px) {
     mat-sidenav {
         display: none;
     }
@@ -282,7 +282,7 @@ header nav.mobile mat-icon {
         margin: 0;
     }
 
-    /*700px min for header too, hidePwd his content if less*/
+    /*735px min for header too, hidePwd his content if less*/
     header nav.desktop {
         display: none;
     }
@@ -292,7 +292,7 @@ header nav.mobile mat-icon {
     }
 }
 
-@media (min-width: 700px) and (min-height: 500px) {
+@media (min-width: 735px) and (min-height: 500px) {
     mat-sidenav-content {
         margin-left: 116px !important;
     }
@@ -306,4 +306,5 @@ header nav.mobile mat-icon {
 
 .nav-link {
     transition: all .3s;
+    text-align: center;
 }
