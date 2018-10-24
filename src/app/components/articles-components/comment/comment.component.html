@@ -9,8 +9,21 @@
             </p>
             <p class="date">Le {{comment.date | date:'dd/MM à HH:mm'}}</p>
         </div>
-        <div class="content">
-            <p>{{comment.content}}</p>
+        <!--<div class="content">-->
+        <!--<p>{{comment.content}}</p>-->
+        <!--</div>-->
+        <div class="content" *ngFor="let token of tokens">
+            <p class="articleLine" *ngIf="token.type === 0"> <!-- For lines -->
+                <span *ngFor="let lineToken of token.data" style="display: contents"><!-- For each token of line -->
+                            <span style="display: contents" *ngIf="lineToken.type == 1">
+                                {{lineToken.data}}
+                            </span>
+                    <!-- if is text -->
+                            <img class="emote" *ngIf="lineToken.type == 2" [alt]="lineToken.data.text"
+                                 [src]="lineToken.data.url"> <!-- if is emote -->
+                        </span>
+                <br>
+            </p>
         </div>
     </div>
 </div>

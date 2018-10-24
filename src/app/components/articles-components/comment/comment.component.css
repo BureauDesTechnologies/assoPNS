@@ -35,3 +35,9 @@
 .date {
     opacity: 0.8;
 }
+
+.content .emote {
+    display: inline-block;
+    height: 16px;
+    margin: 0;
+}

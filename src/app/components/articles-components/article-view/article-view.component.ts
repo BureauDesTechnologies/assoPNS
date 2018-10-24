@@ -7,12 +7,13 @@ import {User} from "../../../models/user";
 import {isNullOrUndefined} from "util";
 import {ArticleService} from "../../../services/article.service";
 import {DialogGiveRightsComponent} from "../../user-components/give-rights/give-rights.component";
+import {Emotes} from "../emotes";
 
 export class ArticleToken {
     type: TokenType;
     data;
 
-    constructor(type: TokenType, data: ArticleToken[] | string | null) {
+    constructor(type: TokenType, data) {
         this.type = type;
         this.data = data;
     }
@@ -30,17 +31,6 @@ export enum TokenType {
     styleUrls: ['./article-view.component.css']
 })
 export class ArticleViewComponent implements OnInit {
-
-    /**
-     * First element is the emote text, second is the link of the img to display
-     * @type {MapConstructor<string, string>}
-     */
-    private static emotes: Map<string, string> = new Map(
-        [
-            [':)', 'assets/emotes/smile.png'],
-            [':D', 'assets/emotes/big_smile.png']
-        ]
-    );
 
     @Input()
     article: Article;
@@ -199,11 +189,11 @@ export class ArticleViewComponent implements OnInit {
         const tokens: ArticleToken[] = [];
         let line = '';
         for (const word of lineIn.split(' ')) {
-            if (ArticleViewComponent.emotes.has(word)) {
+            if (Emotes.all.has(word)) {
                 tokens.push(new ArticleToken(TokenType.TEXT, line));
                 tokens.push(new ArticleToken(TokenType.EMOTE, {
                     text: word,
-                    url: ArticleViewComponent.emotes.get(word)
+                    url: Emotes.all.get(word)
                 }));
                 line = '';
             } else {
