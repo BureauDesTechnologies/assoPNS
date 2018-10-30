@@ -38,7 +38,7 @@
 
 .title .name h1 {
     font-size: 2rem;
-    color: #64dd17;
+    color: var(--primary-color);
     margin: 0 8px;
 }
 
@@ -75,7 +75,7 @@
 
 .contact {
     text-align: center;
-    color: #64dd17;
+    color: var(--primary-color);
     font-weight: 300;
     padding-left: 75px;
 }

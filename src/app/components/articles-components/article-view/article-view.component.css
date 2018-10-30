@@ -86,7 +86,7 @@ mat-card .content {
 
 label {
     font-weight: 500;
-    color: #64dd17;
+    color: var(--primary-color);
     margin: 8px 0 0 8px;
 }
 

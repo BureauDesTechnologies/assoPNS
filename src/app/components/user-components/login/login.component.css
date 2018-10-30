@@ -36,7 +36,7 @@ mat-form-field {
 }
 
 #register, #register:visited {
-    color: #ff9800;
+    color: var(--primary-color);
     display: inline-block;
     text-decoration: none;
     margin-left: 4px;

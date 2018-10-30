@@ -22,3 +22,7 @@ body {
 ::selection {
     background: #64dd17;
 }
+
+:root {
+    --primary-color: #64dd17;
+}

@@ -61,6 +61,15 @@ mat-sidenav a, mat-sidenav a:hover, .assoName {
     margin: auto 4px;
 }
 
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+.nav-link {
+    transition: all .3s;
+    text-align: center;
+}
+
 .assoName {
     max-width: 100px;
     text-align: center;
@@ -303,8 +312,3 @@ header nav.mobile mat-icon {
 }
 
 /*endregion*/
-
-.nav-link {
-    transition: all .3s;
-    text-align: center;
-}

@@ -4,12 +4,12 @@
   justify-content: center;
   flex-direction: column;
   height: 300px;
-  border: 2px dashed #8bc34a;
+  border: 2px dashed var(--primary-color);
   border-radius: 5px;
   margin: 10px 0;
 
   &.hovering {
-    border: 2px solid #8bc34a;
+    border: 2px solid var(--primary-color);
     color: #dadada !important;
   }
 }
@@ -20,7 +20,7 @@
 
 progress::-webkit-progress-value {
   transition: width 0.1s ease;
-  background: #8bc34a;
+  background: var(--primary-color);
 }
 
 progress[value]::-webkit-progress-bar, progress::-moz-progress-bar {
@@ -34,12 +34,12 @@ progress[value]::-webkit-progress-bar, progress::-moz-progress-bar {
 
 .label-file {
   cursor: pointer;
-  color: #8bc34a;
+  color: var(--primary-color);
   font-weight: bold;
 }
 
 .label-file:hover {
-  color: #8bc34a;
+  color: var(--primary-color);
 }
 
 // et on masque le input

@@ -29,7 +29,7 @@
 }
 
 .name {
-    color: #64dd17;
+    color: var(--primary-color);
 }
 
 .date {

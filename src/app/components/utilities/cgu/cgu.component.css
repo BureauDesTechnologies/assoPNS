@@ -9,7 +9,7 @@
 }
 
 h1, h2, strong {
-    color: #ff9800;
+    color: var(--primary-color);
 }
 
 strong.text {
@@ -17,7 +17,7 @@ strong.text {
 }
 
 a, a:visited {
-    color: #ff9800;
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: lighter;
 }
