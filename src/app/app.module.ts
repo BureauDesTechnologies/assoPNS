@@ -59,6 +59,8 @@ import {
 import {PopupService} from "./services/popup.service";
 import {PopupComponent} from "./components/popup/popup.component";
 import {SubscribeToComponent} from "./components/user-components/subscribe-to/subscribe-to.component";
+import {AddEventComponent} from "./components/articles-components/add-event/add-event.component";
+import {PublishComponent} from './components/articles-components/publish/publish.component';
 
 @NgModule({
 
@@ -73,6 +75,7 @@ import {SubscribeToComponent} from "./components/user-components/subscribe-to/su
         HomeComponent,
         ArticleViewComponent,
         AddArticleComponent,
+        AddEventComponent,
         BdcComponent,
         BdeComponent,
         BdsComponent,
@@ -89,7 +92,8 @@ import {SubscribeToComponent} from "./components/user-components/subscribe-to/su
         DialogGiveRightsComponent,
         PopupComponent,
         DialogConfirmDeleteComponent,
-        SubscribeToComponent
+        SubscribeToComponent,
+        PublishComponent
     ],
     entryComponents: [
         DialogGiveRightsComponent,

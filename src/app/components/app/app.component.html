@@ -1,4 +1,4 @@
-<div class="mainWrapper">
+<div class="mainWrapper" *ngIf="!loading">
     <header>
         <nav class="navbar navbar-expand navbar-dark bg-dark desktop">
             <a class="navbar-brand" routerLink="">Assos PNS</a>
@@ -34,11 +34,11 @@
                     <!--<li class="nav-item">-->
                     <!--<a class="nav-link" routerLink="profile">Mon profil</a>-->
                     <!--</li>-->
-                    <li [ngClass]="connectedUser !== null && connectedUser.canPublishAs.length > 0 ? '': 'hideRouter'"
+                    <li [ngClass]="connectedUser !== null && connectedUser !== undefined && connectedUser.canPublishAs.length > 0 ? '': 'hideRouter'"
                         class="nav-item">
-                        <a class="nav-link" routerLink="addArticle">Publier</a>
+                        <a class="nav-link" routerLink="publish">Publier</a>
                     </li>
-                    <li [ngClass]="connectedUser !== null && connectedUser.canPublishAs.length > 0 ? '': 'hideRouter'"
+                    <li [ngClass]="connectedUser !== null && connectedUser !== undefined &&connectedUser.canPublishAs.length > 0 ? '': 'hideRouter'"
                         class="nav-item">
                         <a class="nav-link" routerLink="giveRights">Déléguer</a>
                     </li>
@@ -88,11 +88,11 @@
                         <!--<li class="nav-item">-->
                         <!--<a class="nav-link" routerLink="profile">Mon profil</a>-->
                         <!--</li>-->
-                        <li [ngClass]="connectedUser !== null && connectedUser.canPublishAs.length > 0 ? '': 'hideRouter'"
+                        <li [ngClass]="connectedUser !== null && connectedUser !== undefined &&connectedUser.canPublishAs.length > 0 ? '': 'hideRouter'"
                             class="nav-item">
-                            <a class="nav-link" routerLink="addArticle">Publier</a>
+                            <a class="nav-link" routerLink="publish">Publier</a>
                         </li>
-                        <li [ngClass]="connectedUser !== null && connectedUser.canPublishAs.length > 0 ? '': 'hideRouter'"
+                        <li [ngClass]="connectedUser !== null && connectedUser !== undefined &&connectedUser.canPublishAs.length > 0 ? '': 'hideRouter'"
                             class="nav-item">
                             <a class="nav-link" routerLink="giveRights">Déléguer</a>
                         </li>

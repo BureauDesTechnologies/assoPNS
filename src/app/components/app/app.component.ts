@@ -18,22 +18,31 @@ export class AppComponent implements OnInit {
     mobileMenuOpened: boolean;
     displayAssosPages: boolean;
 
-    constructor(private userService: UserService, private popupService: PopupService, private ref: ChangeDetectorRef, private route: Router) {
+    loading = true;
+
+    constructor(private userService: UserService, private popupService: PopupService, private ref: ChangeDetectorRef,
+                private route: Router) {
         this.currentRoute = '';
         this.mobileMenuOpened = false;
         this.displayAssosPages = false;
     }
 
-    ngOnInit() {
+    async ngOnInit() {
+        this.loading = false;
+        console.log("finished loading");
+
+
         this.route.events.subscribe(event => {
             if (event instanceof RoutesRecognized) {
                 this.currentRoute = event.url;
             }
         });
-        this.ref.reattach();
+        // this.ref.reattach();
+        // console.log(await this.userService.getLoggedUser());
         this.userService.getLoggedUser().subscribe(user => {
             this.connectedUser = user;
-            this.ref.detectChanges();
+            console.log(user);
+            // this.ref.detectChanges();
         });
         // Open popup to inform of cookie using
         if (localStorage.getItem("knowCookies") !== 'true') {

@@ -1,0 +1,9 @@
+<mat-card [ngClass]="user.userId !== 'placeholder' ? '': 'hideComponent'">
+    <mat-card-title>Ajouter un article</mat-card-title>
+    <div *ngIf="canPublish">
+        <app-add-article [article]="articleToSupply" [user]="user"></app-add-article>
+    </div>
+    <div *ngIf="!canPublish">
+        <h1>Vous n'avez pas ces droits !</h1>
+    </div>
+</mat-card>

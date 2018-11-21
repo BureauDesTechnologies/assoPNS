@@ -3,7 +3,6 @@ import {HomeComponent} from "./components/articles-components/home/home.componen
 import {ProfileComponent} from "./components/user-components/profile/profile.component";
 import {RegistrationComponent} from "./components/user-components/registration/registration.component";
 import {LoginComponent} from "./components/user-components/login/login.component";
-import {AddArticleComponent} from "./components/articles-components/add-article/add-article.component";
 import {AssosOverviewComponent} from "./components/assos-components/assos-overview/assos-overview.component";
 import {BdeComponent} from "./components/assos-components/assos-pages/bde/bde.component";
 import {BdsComponent} from "./components/assos-components/assos-pages/bds/bds.component";
@@ -16,6 +15,7 @@ import {CguComponent} from "./components/utilities/cgu/cgu.component";
 import {PncComponent} from "./components/assos-components/assos-pages/pnc/pnc.component";
 import {GiveRightsComponent} from "./components/user-components/give-rights/give-rights.component";
 import {SubscribeToComponent} from "./components/user-components/subscribe-to/subscribe-to.component";
+import {PublishComponent} from "./components/articles-components/publish/publish.component";
 
 
 const appRoutes: Routes = [
@@ -23,7 +23,7 @@ const appRoutes: Routes = [
     {path: "profile", component: ProfileComponent},
     {path: "registration", component: RegistrationComponent},
     {path: "login", component: LoginComponent},
-    {path: "addArticle", component: AddArticleComponent},
+    {path: "publish", component: PublishComponent},
     {path: "aboutAll", component: AssosOverviewComponent},
     {path: "giveRights", component: GiveRightsComponent},
     {path: "subscriptions", component: SubscribeToComponent},

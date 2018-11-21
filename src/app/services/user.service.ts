@@ -19,7 +19,7 @@ export class UserService {
 
 
     constructor(private st: AngularFireStorage, private db: AngularFirestore) {
-        this.loggedUser = new BehaviorSubject(null);
+        this.loggedUser = new BehaviorSubject<User>(null);
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.getLoggedUserFromCache();
@@ -107,16 +107,16 @@ export class UserService {
      * @param {string} link
      * @returns {Promise<void>}
      */
-    updateUrlPhoto(user: User, link: string): Promise<void> {
-        this.db.collection('Users').doc(user.userId).update({
-            photoUrl: link
-        });
-
-        return firebase.auth().currentUser.updateProfile({
-            displayName: this.getLoggedUser().value.lastName,
-            photoURL: link
-        });
-    }
+    // updateUrlPhoto(user: User, link: string): Promise<void> {
+    //     this.db.collection('Users').doc(user.userId).update({
+    //         photoUrl: link
+    //     });
+    //
+    // return firebase.auth().currentUser.updateProfile({
+    //     displayName: this.getLoggedUser().value.lastName,
+    //     photoURL: link
+    // });
+    // }
 
     /**
      * Get the photo URL used to display it
