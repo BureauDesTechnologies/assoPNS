@@ -7,6 +7,7 @@ import * as firebase from "firebase";
 import {firestore} from "firebase";
 import {Observable} from "rxjs-compat/Observable";
 import {isNullOrUndefined} from "util";
+import {UserWatcher} from "../models/user-watcher";
 import UserCredential = firebase.auth.UserCredential;
 
 /**
@@ -15,11 +16,11 @@ import UserCredential = firebase.auth.UserCredential;
 @Injectable()
 export class UserService {
 
-    private readonly loggedUser: BehaviorSubject<User>;
+    private readonly loggedUser: UserWatcher;
 
 
     constructor(private st: AngularFireStorage, private db: AngularFirestore) {
-        this.loggedUser = new BehaviorSubject<User>(null);
+        this.loggedUser = new UserWatcher();
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.getLoggedUserFromCache();
@@ -55,13 +56,17 @@ export class UserService {
     /**
      * You have to subscribe to this to use the logged in User
      *
-     * If you intend to display this, you should use {@link ChangeDetectorRef}
+     * If you intend to display this, you may have to use {@link ChangeDetectorRef}
      * and ChangeDetectorRef.detectChanges() in the subscribe method
      *
      * @returns {BehaviorSubject<User>} null if the user isn't logged in, a User otherwise
      */
-    public getLoggedUser(): BehaviorSubject<User> {
-        return this.loggedUser;
+    public async streamLoggedUser(): Promise<BehaviorSubject<User>> {
+        return await this.loggedUser.streamUser();
+    }
+
+    public async getLoggedUser(): Promise<User> {
+        return this.loggedUser.getUser();
     }
 
     /**
@@ -74,16 +79,16 @@ export class UserService {
     tryConnect(userToConnect: User): Promise<void> {
         return firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
             .then(() => {
-                return firebase.auth().signInWithEmailAndPassword(userToConnect.mail, userToConnect.password).then(res => {
+                return firebase.auth().signInWithEmailAndPassword(userToConnect.mail, userToConnect.password).then(() => {
                     const docRef = this.db.collection('Users').doc(this.getLoggedFirebaseUser().uid).ref;
                     docRef.get().then((doc) => {
                         const user = User.fromDB(doc);
                         user.supplyWithFirebaseUser(firebase.auth().currentUser);
-                        this.loggedUser.next(user);
+                        this.loggedUser.updateUser(user);
                     });
                 });
             })
-            .catch((error) => {
+            .catch(() => {
                 // Handle Errors here.
                 console.error('Error while connecting');
             });
@@ -95,28 +100,9 @@ export class UserService {
     disconnectUser() {
         firebase.auth().signOut().then(() => {
             // Signout successful
-            this.loggedUser.next(null);
+            this.loggedUser.updateUser(null);
         });
     }
-
-    /**
-     * Set the photo url of the user
-     * Doesn't delete the lost url
-     *
-     * @param {User} user to update must have his id set
-     * @param {string} link
-     * @returns {Promise<void>}
-     */
-    // updateUrlPhoto(user: User, link: string): Promise<void> {
-    //     this.db.collection('Users').doc(user.userId).update({
-    //         photoUrl: link
-    //     });
-    //
-    // return firebase.auth().currentUser.updateProfile({
-    //     displayName: this.getLoggedUser().value.lastName,
-    //     photoURL: link
-    // });
-    // }
 
     /**
      * Get the photo URL used to display it
@@ -150,39 +136,6 @@ export class UserService {
             result.push(User.fromDB(user));
         });
         return result;
-    }
-
-    private updateLastConnection(userId: string) {
-        const timestamp = firebase.firestore.FieldValue.serverTimestamp();
-        this.db.collection('Users').doc(userId).update({
-            lastConnection: timestamp,
-        }).catch(error => {
-            console.error('From userService.updateLastConnection : ' + error.toString());
-        });
-    }
-
-    private getLoggedUserFromCache() {
-        const docRef = this.db.collection('Users').doc(this.getLoggedFirebaseUser().uid).ref;
-        docRef.get().then((doc) => {
-            const user = User.fromDB(doc);
-            user.supplyWithFirebaseUser(this.getLoggedFirebaseUser());
-            this.loggedUser.next(user);
-            this.updateLastConnection(user.userId);
-        });
-    }
-
-    private registerUserInDatabase(user: User, uid: string) {
-        const timestamp = firebase.firestore.FieldValue.serverTimestamp();
-        this.db.collection('Users').doc(uid).ref.set({
-            mail: user.mail,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            photoUrl: user.photoUrl,
-            lastConnection: timestamp,
-            registrationDate: timestamp,
-            state: 0,
-            roles: ['user']
-        });
     }
 
     updateSubscriptions(user: User) {
@@ -223,6 +176,39 @@ export class UserService {
         rightsToGrant.forEach(right => totalRights.push(right));
         return firestore().collection('Users').doc(user.userId).update({
             canPublishAs: totalUniqueRights
+        });
+    }
+
+    private updateLastConnection(userId: string) {
+        const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+        this.db.collection('Users').doc(userId).update({
+            lastConnection: timestamp,
+        }).catch(error => {
+            console.error('From userService.updateLastConnection : ' + error.toString());
+        });
+    }
+
+    private getLoggedUserFromCache() {
+        const docRef = this.db.collection('Users').doc(this.getLoggedFirebaseUser().uid).ref;
+        docRef.get().then((doc) => {
+            const user = User.fromDB(doc);
+            user.supplyWithFirebaseUser(this.getLoggedFirebaseUser());
+            this.loggedUser.updateUser(user);
+            this.updateLastConnection(user.userId);
+        });
+    }
+
+    private registerUserInDatabase(user: User, uid: string) {
+        const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+        this.db.collection('Users').doc(uid).ref.set({
+            mail: user.mail,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            photoUrl: user.photoUrl,
+            lastConnection: timestamp,
+            registrationDate: timestamp,
+            state: 0,
+            roles: ['user']
         });
     }
 }

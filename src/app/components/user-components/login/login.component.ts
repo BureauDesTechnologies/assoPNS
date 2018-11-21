@@ -22,12 +22,11 @@ export class LoginComponent implements OnInit {
     }
 
     connect() {
-        this.userService.tryConnect(this.userToConnect).then(_ => {
-            this.userService.getLoggedUser().subscribe(user => {
-                if (user !== null) {
-                    this.router.navigate(['/']);
-                }
-            });
+        this.userService.tryConnect(this.userToConnect).then(async () => {
+            const user = await this.userService.getLoggedUser();
+            if (user !== null) {
+                this.router.navigate(['/']);
+            }
         });
     }
 

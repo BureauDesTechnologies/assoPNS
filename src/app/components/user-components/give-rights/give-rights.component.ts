@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Inject, OnInit} from "@angular/core";
+import {Component, Inject, OnInit} from "@angular/core";
 import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
 import {MAT_DIALOG_DATA, MatCheckboxChange, MatDialog, MatDialogRef, MatSnackBar} from "@angular/material";
@@ -15,22 +15,15 @@ export class GiveRightsComponent implements OnInit {
     loading: boolean;
     private dialogRef;
 
-    constructor(private userService: UserService, private ref: ChangeDetectorRef,
+    constructor(private userService: UserService,
                 private dialog: MatDialog, private snackBar: MatSnackBar) {
         this.user = new User('', '', '', '', [], [], 'placeholder');
         this.loading = true;
     }
 
-    ngOnInit() {
-        this.userService.getLoggedUser().subscribe(user => {
-            if (this.user.userId === 'placeholder' && user === null) {
-                return;
-            }
-            this.user = user;
-            this.loading = false;
-            console.log("updated");
-            this.ref.detectChanges();
-        });
+    async ngOnInit() {
+        this.user = await this.userService.getLoggedUser();
+        this.loading = false;
     }
 
     selectUser(user: User) {
@@ -60,9 +53,8 @@ export class DialogGiveRightsComponent {
 
     user: User;
     userConnected: User;
-
-    private giveRights: string[] = [];
     hasOnlyChoice;
+    private giveRights: string[] = [];
 
     constructor(public dialogRef: MatDialogRef<DialogGiveRightsComponent>,
                 private userService: UserService,
@@ -90,7 +82,7 @@ export class DialogGiveRightsComponent {
     }
 
     validate() {
-        this.userService.addRightsToPublish(this.user, this.giveRights).then(_ => {
+        this.userService.addRightsToPublish(this.user, this.giveRights).then(() => {
             this.dialogRef.close(true);
         });
     }

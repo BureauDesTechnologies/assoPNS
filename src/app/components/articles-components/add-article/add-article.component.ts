@@ -18,7 +18,6 @@ export class AddArticleComponent implements OnInit {
         this.imageToDisplay = '';
         this.article =
             new Article(null, "", "", "", "", [], [], null);
-
     }
 
     ngOnInit() {

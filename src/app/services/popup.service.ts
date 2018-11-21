@@ -1,8 +1,6 @@
 import {Injectable} from "@angular/core";
-import * as firebase from "firebase";
 import {PopupComponent} from "../components/popup/popup.component";
 import {MatSnackBar} from "@angular/material";
-import UserCredential = firebase.auth.UserCredential;
 
 /**
  * This class contains all functions used to manage users

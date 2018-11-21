@@ -2,6 +2,17 @@ import {isNullOrUndefined} from "util";
 import {ArticleComment} from "./article-comment";
 
 export class Article {
+    id: string;
+    title: string;
+    content: string;
+    imageUrl: string;
+    category: string;
+    downloadableImageUrl: string;
+    favorite: Set<string>;
+    clap: Set<string>;
+    creation: Date;
+    commentsCount: number;
+
     /**
      * @param id On firebase
      * @param title No more than one line
@@ -12,7 +23,8 @@ export class Article {
      * @param clap
      * @param creation
      */
-    constructor(id: string, title: string, content: string, imageUrl: string, category: string, favorite: string[], clap: string[], creation: Date) {
+    constructor(id: string, title: string, content: string, imageUrl: string, category: string,
+                favorite: string[], clap: string[], creation: Date) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -24,18 +36,11 @@ export class Article {
         this._comments = new Set();
     }
 
-    id: string;
-    title: string;
-    content: string;
-    imageUrl: string;
-    category: string;
-    downloadableImageUrl: string;
-    favorite: Set<string>;
-    clap: Set<string>;
-    creation: Date;
-
     private _comments: Set<ArticleComment>;
-    commentsCount: number;
+
+    set comments(value: Set<ArticleComment>) {
+        this._comments = value;
+    }
 
     static fromDB(res): Article {
         return this.fromJSON(res.id, res.data());
@@ -73,9 +78,5 @@ export class Article {
         const result = Array.from(this._comments.values());
         result.sort((a, b) => b.date.getTime() - a.date.getTime());
         return result;
-    }
-
-    set comments(value: Set<ArticleComment>) {
-        this._comments = value;
     }
 }

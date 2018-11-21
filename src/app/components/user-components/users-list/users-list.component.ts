@@ -17,13 +17,11 @@ export class UsersListComponent implements OnInit {
 
     @Output()
     selectedUser = new EventEmitter<User>();
-
-    private users: User[];
     displayedUsers: User[];
     page = 0;
     searchField: string;
-
     loading: boolean;
+    private users: User[];
 
     constructor(private userService: UserService) {
         this.users = [];
@@ -80,18 +78,14 @@ export class UsersListComponent implements OnInit {
         this.selectedUser.emit(user);
     }
 
-    private async getDownloadUrl(user: User) {
-        return await this.userService.getDownloadUrl(user.photoUrl);
+    // region ===== Pagination =====
+    previousPage() {
+        --this.page;
     }
 
     // region ===== Filters ========
 
     // endregion
-
-    // region ===== Pagination =====
-    previousPage() {
-        --this.page;
-    }
 
     nextPage() {
         ++this.page;
@@ -99,6 +93,10 @@ export class UsersListComponent implements OnInit {
 
     isLastPage() {
         return this.displayedUsers.length < ((this.page + 1) * this.pageStep);
+    }
+
+    private async getDownloadUrl(user: User) {
+        return await this.userService.getDownloadUrl(user.photoUrl);
     }
 
     // endregion

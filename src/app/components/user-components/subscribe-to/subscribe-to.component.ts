@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
 import {MatSnackBar} from "@angular/material";
@@ -24,22 +24,15 @@ export class SubscribeToComponent implements OnInit {
         "Polytech Nice Conseil"
     ];
 
-    constructor(private userService: UserService, private ref: ChangeDetectorRef, private snackbar: MatSnackBar) {
+    constructor(private userService: UserService, private snackbar: MatSnackBar) {
     }
 
-    ngOnInit() {
+    async ngOnInit() {
         this.subscriptions = [];
-        this.userService.getLoggedUser().subscribe(async user => {
-            if (user === null && this.user != null) { // Disconnect
-                this.user = null;
-            } else {
-                this.user = user;
-                if (this.user !== null) {
-                    this.subscriptions = this.user.subscriptions;
-                }
-            }
-            this.ref.detectChanges();
-        });
+        this.user = await this.userService.getLoggedUser();
+        if (this.user !== null) {
+            this.subscriptions = this.user.subscriptions;
+        }
     }
 
     validate() {

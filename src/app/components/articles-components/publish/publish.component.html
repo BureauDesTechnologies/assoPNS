@@ -1,4 +1,4 @@
-<mat-card [ngClass]="user.userId !== 'placeholder' ? '': 'hideComponent'">
+<mat-card *ngIf="canPublish != undefined" [ngClass]="user.userId !== 'placeholder' ? '': 'hideComponent'">
     <mat-card-title>Ajouter un article</mat-card-title>
     <div *ngIf="canPublish">
         <app-add-article [article]="articleToSupply" [user]="user"></app-add-article>

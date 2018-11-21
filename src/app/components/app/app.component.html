@@ -7,7 +7,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul *ngIf="connectedUser === null" class="navbar-nav">
+                <ul *ngIf="!isLogged" class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" routerLink="aboutAll">Nous découvrir<span
                                 class="sr-only">(current)</span></a>
@@ -16,7 +16,7 @@
                         <a class="nav-link" routerLink="login">Se connecter<span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
-                <ul class="navbar-nav" [ngClass]="connectedUser !== null ? '': 'hideRouter'">
+                <ul class="navbar-nav" *ngIf="isLogged">
                     <li class="nav-item">
                         <a class="nav-link" routerLink="">Accueil<span class="sr-only">(current)</span></a>
                     </li>
@@ -31,14 +31,11 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLink="subscriptions">Abonnements</a>
                     </li>
-                    <!--<li class="nav-item">-->
-                    <!--<a class="nav-link" routerLink="profile">Mon profil</a>-->
-                    <!--</li>-->
-                    <li [ngClass]="connectedUser !== null && connectedUser !== undefined && connectedUser.canPublishAs.length > 0 ? '': 'hideRouter'"
+                    <li *ngIf="isLogged && connectedUser.canPublishAs.length > 0"
                         class="nav-item">
                         <a class="nav-link" routerLink="publish">Publier</a>
                     </li>
-                    <li [ngClass]="connectedUser !== null && connectedUser !== undefined &&connectedUser.canPublishAs.length > 0 ? '': 'hideRouter'"
+                    <li *ngIf="isLogged && connectedUser.canPublishAs.length > 0"
                         class="nav-item">
                         <a class="nav-link" routerLink="giveRights">Déléguer</a>
                     </li>
@@ -69,7 +66,7 @@
                                     class="sr-only">(current)</span></a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav" [ngClass]="connectedUser !== null ? '': 'hideRouter'"
+                    <ul class="navbar-nav" *ngIf="isLogged"
                         (click)="mobileMenuOpened = false">
                         <li class="nav-item">
                             <a class="nav-link" routerLink="">Accueil<span class="sr-only">(current)</span></a>
@@ -88,11 +85,11 @@
                         <!--<li class="nav-item">-->
                         <!--<a class="nav-link" routerLink="profile">Mon profil</a>-->
                         <!--</li>-->
-                        <li [ngClass]="connectedUser !== null && connectedUser !== undefined &&connectedUser.canPublishAs.length > 0 ? '': 'hideRouter'"
+                        <li *ngIf="isLogged && connectedUser.canPublishAs.length > 0"
                             class="nav-item">
                             <a class="nav-link" routerLink="publish">Publier</a>
                         </li>
-                        <li [ngClass]="connectedUser !== null && connectedUser !== undefined &&connectedUser.canPublishAs.length > 0 ? '': 'hideRouter'"
+                        <li *ngIf="isLogged && connectedUser.canPublishAs.length > 0"
                             class="nav-item">
                             <a class="nav-link" routerLink="giveRights">Déléguer</a>
                         </li>

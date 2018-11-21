@@ -76,21 +76,18 @@ export class ArticleViewComponent implements OnInit {
             this.domSanitizer.bypassSecurityTrustResourceUrl("../../../../assets/icons/clap_outlined.svg"));
     }
 
-    ngOnInit() {
+    async ngOnInit() {
         this.articleBase = new Article(this.article.id, this.article.title, this.article.content,
             this.article.imageUrl, this.article.category, [], [], this.article.creation);
-        this.userService.getLoggedUser().subscribe(user => {
-            this.connectedUser = user;
-            if (this.connectedUser === null) {
-                return;
-            }
-            if (this.article.clap.has(this.connectedUser.userId)) {
-                this.hasBeenClap = true;
-            }
-            if (this.article.favorite.has(this.connectedUser.userId)) {
-                this.hasBeenFav = true;
-            }
-        });
+        this.connectedUser = await this.userService.getLoggedUser();
+
+        if (this.article.clap.has(this.connectedUser.userId)) {
+            this.hasBeenClap = true;
+        }
+        if (this.article.favorite.has(this.connectedUser.userId)) {
+            this.hasBeenFav = true;
+        }
+
         this.tokens = this.tokenize(this.article);
     }
 

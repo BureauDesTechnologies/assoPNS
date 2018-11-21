@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {UserService} from "../../../services/user.service";
 import {User} from "../../../models/user";
 import {Event} from "../../../models/event";
@@ -15,40 +15,28 @@ import {Router} from "@angular/router";
 export class PublishComponent implements OnInit {
 
     user: User;
-    canPublish = false;
+    canPublish;
 
     articleToSupply;
     eventToSupply;
 
     constructor(private userService: UserService, private articleService: ArticleService,
-                private snackbar: MatSnackBar, private ref: ChangeDetectorRef, private router: Router) {
+                private snackbar: MatSnackBar, private router: Router) {
         this.user = new User('', '', '', '', [], [], 'placeholder');
     }
 
-    ngOnInit() {
+    async ngOnInit() {
         this.articleToSupply =
             new Article(null, "", "", "", "", [], [], null);
         this.eventToSupply = new Event(this.articleToSupply, null, null);
-
-        // this.user = this.userService.getLoggedUserInstantly();
-        this.userService.getLoggedUser().subscribe(user => {
-            if (this.user.userId === 'placeholder' && user === null) {
-                return;
-            }
-            this.user = user;
-            console.log("Can publish ? : ");
-            console.log(user);
-            if (this.user.canPublishAs.length === 1) {
-                this.canPublish = true;
-            }
-            this.ref.detectChanges();
-        });
+        this.user = await this.userService.getLoggedUser();
+        this.canPublish = this.user.canPublishAs.length === 1;
     }
 
     publishArticle() {
         this.articleToSupply.emit(this.articleToSupply);
         if (this.articleToSupply.title !== '' && this.articleToSupply.content !== '' && this.articleToSupply.category !== '') {
-            this.articleService.addArticle(this.articleToSupply).then(_ => {
+            this.articleService.addArticle(this.articleToSupply).then(() => {
                 this.snackbar.open('L\'article a été ajouté', null, {duration: 1500});
             });
             setTimeout(() => {

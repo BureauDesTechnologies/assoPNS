@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/user";
 import {Router, RoutesRecognized} from "@angular/router";
@@ -18,32 +18,36 @@ export class AppComponent implements OnInit {
     mobileMenuOpened: boolean;
     displayAssosPages: boolean;
 
-    loading = true;
+    isLogged = false;
 
-    constructor(private userService: UserService, private popupService: PopupService, private ref: ChangeDetectorRef,
-                private route: Router) {
+    constructor(private userService: UserService, private popupService: PopupService,
+                private router: Router) {
         this.currentRoute = '';
         this.mobileMenuOpened = false;
         this.displayAssosPages = false;
     }
 
     async ngOnInit() {
-        this.loading = false;
-        console.log("finished loading");
-
-
-        this.route.events.subscribe(event => {
+        this.router.events.subscribe(event => {
             if (event instanceof RoutesRecognized) {
                 this.currentRoute = event.url;
             }
         });
-        // this.ref.reattach();
-        // console.log(await this.userService.getLoggedUser());
-        this.userService.getLoggedUser().subscribe(user => {
+
+        this.connectedUser = await this.userService.getLoggedUser();
+        if (this.connectedUser !== null) {
+            this.isLogged = true;
+        }
+        (await this.userService.streamLoggedUser()).subscribe(user => {
+            if (user === null && this.connectedUser !== null) {
+                // Disconnect from user
+                this.isLogged = false;
+                this.router.navigate(['/']);
+            }
             this.connectedUser = user;
-            console.log(user);
-            // this.ref.detectChanges();
         });
+
+
         // Open popup to inform of cookie using
         if (localStorage.getItem("knowCookies") !== 'true') {
             setTimeout(() => {

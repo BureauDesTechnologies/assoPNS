@@ -157,10 +157,6 @@ a:hover .bdh, a .bdh.active {
     background-size: contain;
 }
 
-.hideRouter {
-    display: none;
-}
-
 footer {
     background: #494949;
     text-align: center;

@@ -1,6 +1,10 @@
 import {User} from "./user";
 
 export class ArticleComment {
+    date: Date;
+    author: User;
+    content: string;
+
     /**
      * @param author
      * @param date
@@ -11,9 +15,5 @@ export class ArticleComment {
         this.date = date;
         this.content = content;
     }
-
-    date: Date;
-    author: User;
-    content: string;
 
 }

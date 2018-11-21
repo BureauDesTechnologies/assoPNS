@@ -29,16 +29,6 @@ export class User {
     }
 
     private _downloadPhotoUrl: string;
-    private _subscriptions: string[];
-
-
-    get subscriptions(): string[] {
-        return this._subscriptions;
-    }
-
-    set subscriptions(value: string[]) {
-        this._subscriptions = value;
-    }
 
     get downloadPhotoUrl(): string {
         return this._downloadPhotoUrl;
@@ -46,6 +36,16 @@ export class User {
 
     set downloadPhotoUrl(value: string) {
         this._downloadPhotoUrl = value;
+    }
+
+    private _subscriptions: string[];
+
+    get subscriptions(): string[] {
+        return this._subscriptions;
+    }
+
+    set subscriptions(value: string[]) {
+        this._subscriptions = value;
     }
 
     private _state: UserState;

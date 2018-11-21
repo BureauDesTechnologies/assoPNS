@@ -10,10 +10,10 @@ import {isNullOrUndefined} from "util";
 })
 export class HomeComponent implements OnInit {
 
+    articles: Article[];
+
     constructor(private articleService: ArticleService) {
     }
-
-    articles: Article[];
 
     async ngOnInit() {
         this.articles = [];
